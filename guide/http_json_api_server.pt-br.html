@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_json_api_server.html" >English</a></li>
+        <li><a href="http_json_api_server.es.html" >Español</a></li>
+        <li><a href="http_json_api_server.fr.html" >Français</a></li>
+        <li><a href="http_json_api_server.ja.html" >日本語</a></li>
+        <li><a href="http_json_api_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_json_api_server.ru.html" >Русский</a></li>
+        <li><a href="http_json_api_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_json_api_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_uppercaserer.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="index.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">API DE SERVIDOR DE JSON HTTP</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">13 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escreva um <strong>servidor</strong> HTTP que serve dados JSON quando recebe uma requisição GET no caminho <code>/api/parsetime</code>. Expere que a requisição contenha uma string de consulta com a chave &#39;iso&#39; e uma data no formato ISO como valor.</p>
+<p>Por exemplo:</p>
+<p>  /api/parsetime?iso=2013-08-10T12:10:15.474Z</p>
+<p>A resposta JSON deve conter somente as propriedades &#39;hour&#39;, &#39;minute&#39; e &#39;second&#39;. Por exemplo:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"hour"</span>: <span class="hljs-number">14</span>,
+  <span class="hljs-string">"minute"</span>: <span class="hljs-number">23</span>,
+  <span class="hljs-string">"second"</span>: <span class="hljs-number">15</span>
+}
+</code></pre>
+<p>Adicione um segundo <em>endpoint</em> para o caminho <code>/api/unixtime</code> que aceita a mesma string de consulta, mas retorne um valor referente a <em>UNIX epoch time</em> (tempo de época UNIX) na propriedade &#39;unixtime&#39;. Por exemplo:</p>
+<pre><code class="lang-json">{ <span class="hljs-string">"unixtime"</span>: <span class="hljs-number">1376136615474</span> }
+</code></pre>
+<p>Seu servidor deve escutar na porta fornecida pelo primeiro argumento passado para seu programa.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>O objeto <code>request</code> de um servidor HTTP contém a propriedade <code>url</code> que você vai precisar usar para <em>&quot;rotear&quot;</em> suas requisições para os dois endpoints. </p>
+<p>Você pode <em>parsear</em> a URL e a string de consulta usando o módulo do núcleo do Node chamado &#39;url&#39;. <code>url.parse(request.url, true)</code> vai parsear o conteúdo de <code>request.url</code> e fornecer para você um objeto com propriedades úteis.</p>
+<p>Por exemplo, no prompt de comando, digite:</p>
+<pre><code class="lang-sh">$ node -pe <span class="hljs-string">"require('url').parse('/test?q=1', true)"</span>
+</code></pre>
+<p>Documentação sobre o módulo <code>url</code> pode ser encontrada apontando seu navegador aqui:
+  <a href="../node_apidoc/url.html">/node_apidoc/url.html</a></p>
+<p>Sua reposta deve ser uma string no formato JSON. Veja <code>JSON.stringify()</code> para mais informações. </p>
+<p>Você deve também ser um bom cidadão da web e configurar seu <code>Content-Type</code> corretamente:</p>
+<pre><code class="lang-js">res.writeHead(<span class="hljs-number">200</span>, { <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span> })
+</code></pre>
+<p>O objeto <code>Date</code> do JavaScript pode imprimir datas no formato ISO, por exemplo, <code>new Date().toISOString()</code>. Ele também pode parsear este formato se você passar uma string para um construtor <code>Date</code>. </p>
+<p><code>Date.getTime()</code> também pode ser útil.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_uppercaserer.pt-br.html" class="u-inline-block all-caps">TRANSFORMADOR UPPERCASE HTTP
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="index.pt-br.html" class="u-inlineBlock all-caps">
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

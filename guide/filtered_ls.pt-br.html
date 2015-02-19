@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="filtered_ls.html" >English</a></li>
+        <li><a href="filtered_ls.es.html" >Español</a></li>
+        <li><a href="filtered_ls.fr.html" >Français</a></li>
+        <li><a href="filtered_ls.ja.html" >日本語</a></li>
+        <li><a href="filtered_ls.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="filtered_ls.ru.html" >Русский</a></li>
+        <li><a href="filtered_ls.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="filtered_ls.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_async_io.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="make_it_modular.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">LISTA DE ARQUIVOS FILTRADOS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">5 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Crie um programa que imprima uma lista de arquivos filtrados por suas extensões em um dado diretório. Você irá receber um nome de diretório como primeiro argumento para seu programa (por exemplo: &#39;caminho/para/diretorio/&#39;) e uma extensão de arquivo pela qual filtrar como segundo argumento.</p>
+<p>Por exemplo, se você receber &#39;txt&#39; como segundo argumento, então você precisará criar um filtro para que a lista contenha apenas arquivos que <strong>terminem com .txt</strong>. Note que o segundo argumento <em>não irá</em> vir precedido por um &#39;.&#39; (ponto).</p>
+<p>A lista de arquivos deve ser impressa no console, um arquivo por linha. Você <strong>precisa</strong>, obrigatóriamente, usar I/O assíncrono.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>O método <code>fs.readdir()</code> recebe o caminho de um diretório como seu primeiro argumento e um callback como seu segundo. A assinatura do callback é:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, list)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>onde <code>list</code> é um array de Strings contendo nomes de arquivos.</p>
+<p>Documentação relativa ao módulo <code>fs</code> pode ser encontrada apontando seu navegador para este endereço:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>Você também pode achar o módulo <code>path</code> do node muito útil, especialmente o método <code>extname</code>.</p>
+<p>A documentação do módulo <code>path</code> pode ser encontrada apontando seu navegador para este endereço:
+  <a href="../node_apidoc/path.html">/node_apidoc/path.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_async_io.pt-br.html" class="u-inline-block all-caps">MEU PRIMEIRO I/O ASSÍNCRONO!
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="make_it_modular.pt-br.html" class="u-inlineBlock all-caps">FAÇA ISSO MODULAR
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

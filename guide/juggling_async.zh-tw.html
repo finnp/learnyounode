@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="zh-tw">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="juggling_async.html" >English</a></li>
+        <li><a href="juggling_async.es.html" >Español</a></li>
+        <li><a href="juggling_async.fr.html" >Français</a></li>
+        <li><a href="juggling_async.ja.html" >日本語</a></li>
+        <li><a href="juggling_async.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="juggling_async.ru.html" >Русский</a></li>
+        <li><a href="juggling_async.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="juggling_async.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_collect.zh-tw.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-tw.html">learnyounode</a>
+      <a href="time_server.zh-tw.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">JUGGLING ASYNC</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">9 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>這個習題和前一個習題（HTTP COLLECT）有點類似，您同樣需要使用 <code>http.get()</code> 方法。不過，這次您會從前三個命令列參數取得 <strong>三個</strong> URL（網址）。</p>
+<p>您必須把每個網址的內容收集完整以後才顯示在終端機（標準輸出，stdout）上。您只要把資料以 String 的方式顯示就好，一個網址一行，不用顯示資料長度。重點是，您 <strong>必須</strong> 以命令列參數的順序顯示這些資料。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>不要預期這三個伺服器都正常運作！他們給您完整的回應的順序不一定如您預期，因此您不能天真地在拿到資料的時候就印出來，因為它們的順序可能會亂掉。</p>
+<p>您將需要持續追蹤有多少網址回應他們的完整內容，並把結果按照順序排好。一旦您全部完成了，就可以把這些資料顯示在終端機上。</p>
+<p>計算 callback 函式被呼叫的次數是 Node 中管理非同步（async）的重要方法之一。您可能會發現使用第三方函式庫像 <a href="http://npm.im/async">async</a> 或是 <a href="http://npm.im/after">after</a> 會比起自己做還要方便。但是在這個習題中，請您自己在沒有任何外部函式庫的幫助下自己嘗試。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_collect.zh-tw.html" class="u-inline-block all-caps">HTTP COLLECT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="time_server.zh-tw.html" class="u-inlineBlock all-caps">TIME SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

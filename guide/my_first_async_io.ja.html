@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_async_io.html" >English</a></li>
+        <li><a href="my_first_async_io.es.html" >Español</a></li>
+        <li><a href="my_first_async_io.fr.html" >Français</a></li>
+        <li><a href="my_first_async_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_async_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_async_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_async_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_async_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_io.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="filtered_ls.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">初めての非同期I/O！</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">4 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p><strong>非同期</strong> ファイルシステムのメソッドを使ってファイルの改行数を出すアプリを書いてください。<code>cat file | wc -l</code>と同じようなアプリです。</p>
+<p>アプリの一つ目のコマンドライン引数はそのファイルのパスです。</p>
+<hr>
+<h1 id="-">ヒント</h1>
+<p>解決方法は前のとほとんど一緒です。ただ今回は Nodeの良い方法を使わないといけないです：<strong>非同期(ASYNC)</strong> 。</p>
+<p><code>fs.readFileSync()</code> ではなく <code>fs.readFile()</code> を使わないといけません。返り値を受け取るのではなく、二つ目の引数としてコールバック関数を使って値を受け取ってください。コールバックについて勉強したい場合はこれを読んでください： <a href="https://github.com/maxogden/art-of-node#callbacks">https://github.com/maxogden/art-of-node#callbacks</a></p>
+<p>通常、Nodeでは習慣的にコールバックには以下の様な引数を使うことに注意してください：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>エラーであれば、<code>err</code> は <code>null</code> なので、一つ目の引数でエラーかどうか判別出来ます。エラーがなければ二つ目の引数には大切な<code>Buffer</code>オブジェクトが入っています。<code>readFileSync</code>と同じようにファイルパスとコールバック引数の間に<code>&quot;utf8&quot;</code>を入れてもいいです。その場合は<code>Buffer</code>のかわりに<code>String</code>が返ります。</p>
+<p><code>fs</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_io.ja.html" class="u-inline-block all-caps">初めてのI/O！
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="filtered_ls.ja.html" class="u-inlineBlock all-caps">LSのフィルター
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

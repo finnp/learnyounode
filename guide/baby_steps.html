@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="baby_steps.html" >English</a></li>
+        <li><a href="baby_steps.es.html" >Español</a></li>
+        <li><a href="baby_steps.fr.html" >Français</a></li>
+        <li><a href="baby_steps.ja.html" >日本語</a></li>
+        <li><a href="baby_steps.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="baby_steps.ru.html" >Русский</a></li>
+        <li><a href="baby_steps.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="baby_steps.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="hello_world.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="my_first_io.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">BABY STEPS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">2 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Write a program that accepts one or more numbers as command-line arguments and prints the sum of those numbers to the console (stdout).</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>You can access command-line arguments via the global <code>process</code> object. The <code>process</code> object has an <code>argv</code> property which is an array containing the complete command-line. i.e. <code>process.argv</code>.</p>
+<p>To get started, write a program that simply contains:</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(process.argv)
+</code></pre>
+<p>Run it with <code>node program.js</code> and some numbers as arguments. e.g:</p>
+<pre><code class="lang-sh">$ node program.js 1 2 3
+</code></pre>
+<p>In which case the output would be an array looking something like:</p>
+<pre><code class="lang-js">[ <span class="hljs-string">'node'</span>, <span class="hljs-string">'/path/to/your/program.js'</span>, <span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span> ]
+</code></pre>
+<p>You&#39;ll need to think about how to loop through the number arguments so  you can output just their sum. The first element of the process.argv array is always &#39;node&#39;, and the second element is always the path to your program.js file, so you need to start at the 3rd element (index 2), adding each item to the total until you reach the end of the array.</p>
+<p>Also be aware that all elements of <code>process.argv</code> are strings and you may need to <em>coerce</em> them into numbers. You can do this by prefixing the property with <code>+</code> or passing it to <code>Number()</code>. e.g. <code>+process.argv[2]</code> or <code>Number(process.argv[2])</code>.</p>
+<p>learnyounode will be supplying arguments to your program when you run <code>learnyounode verify program.js</code> so you don&#39;t need to supply them yourself. To test your program without verifying it, you can invoke it with <code>learnyounode run program.js</code>. When you use <code>run</code>, you are invoking the test environment that learnyounode sets up for each exercise.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="hello_world.html" class="u-inline-block all-caps">HELLO WORLD
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_io.html" class="u-inlineBlock all-caps">MY FIRST I/O!
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

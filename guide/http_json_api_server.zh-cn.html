@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_json_api_server.html" >English</a></li>
+        <li><a href="http_json_api_server.es.html" >Español</a></li>
+        <li><a href="http_json_api_server.fr.html" >Français</a></li>
+        <li><a href="http_json_api_server.ja.html" >日本語</a></li>
+        <li><a href="http_json_api_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_json_api_server.ru.html" >Русский</a></li>
+        <li><a href="http_json_api_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_json_api_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_uppercaserer.zh-cn.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-cn.html">learnyounode</a>
+      <a href="index.zh-cn.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP JSON API 服务器</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">13 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>编写一个 HTTP <strong>服务器</strong>，每当接收到一个路径为 &#39;/api/parsetime&#39; 的 GET 请求的时候，响应一些 JSON 数据。我们期望请求会包含一个查询参数（query string），key 是 &quot;iso&quot;，值是 ISO 格式的时间。</p>
+<p>如:</p>
+<p>  /api/parsetime?iso=2013-08-10T12:10:15.474Z</p>
+<p>所响应的 JSON 应该只包含三个属性：&#39;hour&#39;，&#39;minute&#39; 和 &#39;second&#39;。例如：</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"hour"</span>: <span class="hljs-number">14</span>,
+  <span class="hljs-string">"minute"</span>: <span class="hljs-number">23</span>,
+  <span class="hljs-string">"second"</span>: <span class="hljs-number">15</span>
+}
+</code></pre>
+<p>然后增再加一个接口，路径为 &#39;/api/unixtime&#39;，它可以接收相同的查询参数（query string），但是它的返回会包含一个属性：&#39;unixtime&#39;，相应值是一个 UNIX 时间戳。例如:</p>
+<pre><code class="lang-json">{ <span class="hljs-string">"unixtime"</span>: <span class="hljs-number">1376136615474</span> }
+</code></pre>
+<p>你的服务器需要监听第一个命令行参数所指定的端口。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>HTTP 服务器的 <code>request</code> 对象含有一个 <code>url</code> 属性，你可以通过它来决定具体需要走哪一条<em>&quot;路由&quot;</em>。</p>
+<p>你可以使用 Node 的核心模块 &#39;url&#39; 来处理 URL 和 查询参数（query string）。
+<code>url.parse(request.url, true)</code> 方法会处理 request.url，它返回的对象中包含了一些很有帮助的属性，方便方便你处理 querystring。</p>
+<p>举个例子，你可以在命令行窗口输入以下命令试试：</p>
+<pre><code class="lang-sh">$ node -pe <span class="hljs-string">"require('url').parse('/test?q=1', true)"</span>
+</code></pre>
+<p>关于 <code>url</code> 模块的文档，你可以使用浏览器访问如下路径来访问：
+  <a href="../node_apidoc/url.html">/node_apidoc/url.html</a></p>
+<p>你的响应应该是一个 JSON 字符串的形式。请查看 <code>JSON.stringify()</code> 来获取更多信息。</p>
+<p>你也应当争做 Web 世界的好公民，正确地为响应设置 <code>Content-Type</code> 属性：</p>
+<pre><code class="lang-js">res.writeHead(<span class="hljs-number">200</span>, { <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span> })
+</code></pre>
+<p>JavaScript 的 <code>Date</code> 可以将日期以 ISO 的格式展现出来，如：<code>new Date().toISOString()</code>。并且，如果你把一个字符串传给 <code>Date</code>的构造函数，它也可以帮你将字符串处理成日期类型。另外，<code>Date#getTime()</code> 放个应该也会很有用。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_uppercaserer.zh-cn.html" class="u-inline-block all-caps">HTTP 大写转换器
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="index.zh-cn.html" class="u-inlineBlock all-caps">
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_file_server.html" >English</a></li>
+        <li><a href="http_file_server.es.html" >Español</a></li>
+        <li><a href="http_file_server.fr.html" >Français</a></li>
+        <li><a href="http_file_server.ja.html" >日本語</a></li>
+        <li><a href="http_file_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_file_server.ru.html" >Русский</a></li>
+        <li><a href="http_file_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_file_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="time_server.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="http_uppercaserer.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP FILE SERVER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">11 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escribe un <strong>servidor</strong> HTTP que sirva un mismo archivo de texto para todas las peticiones que reciba.</p>
+<p>El servidor deberá escuchar en un puerto cuyo número será el primer argumento del programa. Como segundo argumento recibirá la ruta a la ubicación del archivo. <strong>Debes</strong> usar <code>fs.createReadStream()</code> para servir como stream los contenidos del archivo en la respuesta del servicio.</p>
+<hr>
+<h2 id="pistas">PISTAS</h2>
+<p>En este ejercicio debes crear un servidor HTTP en lugar de un servidor TCP. Usa el módulo <code>http</code> de Node para ello que tiene un método <code>http.createServer()</code> para servir peticiones HTTP.</p>
+<p><code>http.createServer()</code> espera de parámetro un callback a invocar cuando se reciba una petición HTTP. La firma de dicho callback es la siguiente:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(request, response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Los parámetros <code>request</code>y <code>response</code> son los objetos que representan la petición y su respuesta respectivamente. La petición provee propiedades, como ser el encabezado y los parámetros de la misma. La respuesta permite devolverle al cliente encabezados y un cuerpo (body).</p>
+<p>¡Ten en cuenta que ambos <code>request</code> y <code>response</code> son streams de Node! Por lo tanto puedes usar APIs de streaming para simplificar el envío de datos.</p>
+<p>La llamada a <code>http.createServer()</code> devuelve una instancia del <code>server</code>. Debes llamar a <code>server.listen(portNumber)</code> para comenzar la escucha en un puerto particular. Por ejemplo:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
+  <span class="hljs-comment">// manejar cada petición aquí.</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>La documentación del módulo <code>http</code> puede verse en:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p>Recuerda que el módulo <code>fs</code> tiene APIs para streaming de archivos. Debes usar <code>fs.createReadStream()</code> para crear un stream que represente el archivo de entrada. Luego puedes concatenar el stream con pipe <code>src.pipe(dst)</code> para pasar los datos del stream <code>src</code> al stream writer de salida <code>dst</code>. Es decir puedes conectar un filesystem stream a un HTTP response stream.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="time_server.es.html" class="u-inline-block all-caps">TIME SERVER
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_uppercaserer.es.html" class="u-inlineBlock all-caps">HTTP UPPERCASERER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

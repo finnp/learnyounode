@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="time_server.html" >English</a></li>
+        <li><a href="time_server.es.html" >Español</a></li>
+        <li><a href="time_server.fr.html" >Français</a></li>
+        <li><a href="time_server.ja.html" >日本語</a></li>
+        <li><a href="time_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="time_server.ru.html" >Русский</a></li>
+        <li><a href="time_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="time_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="juggling_async.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="http_file_server.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">TIME SERVER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">10 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>¡Crea un <strong>Servidor de tiempo y hora TCP </strong>!</p>
+<p>El servidor debe escuchar conexiones TCP en el puerto indicado por el primer argumento del programa. Para cada conexión debes escribir la fecha actual y la hora en formato 24hs del siguiente modo:</p>
+<pre><code><span class="hljs-string">"AAAA-MM-DD hh:mm"</span>
+</code></pre><p>seguido por un carácter <strong>newline</strong>(&#39;\n&#39;). Tanto el mes, el día como la hora y minuto deben tener un 0 para ocupar 2 espacios, por ejemplo:</p>
+<pre><code><span class="hljs-string">"2013-07-06 17:42"</span>
+</code></pre><hr>
+<h2 id="pistas">PISTAS</h2>
+<p>Para este ejercicio crearemos un servidor TCP en lugar de usar el módulo HTTP usaremos el módulo <code>net</code> del núcleo de Node que tiene funcionalidades de red.</p>
+<p>El módulo <code>net</code> tiene un método <code>net.createServer()</code> que recibe un callback. A diferencia de otros callbacks en Node, el callback <code>createServer()</code> se llama una vez por cada conexión entrante. La firma es la siguiente:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(socket)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>net.createServer()</code> devuelve una variable instancia de <code>server</code>. Para iniciar la escucha del servicio hay que llamar a <code>server.listen(portNumber)</code>.</p>
+<p>Un ejemplo de un servidor Node típico es como sigue:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>)
+<span class="hljs-keyword">var</span> server = net.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(socket)</span> </span>{
+  <span class="hljs-comment">// manejo del socket</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>Recuerda usar el puerto recibido por argumento.</p>
+<p>El objeto <code>socket</code> contiene información sobre la conexión y es un Stream duplex, es decir que se puede escribir y leer a la vez.</p>
+<p>Puedes usar <code>socket.write(data)</code> para escribir en el socket y luego <code>socket.end()</code> para cerrar el socket. Alternativamente, el método <code>end()</code> puede recibir un objeto de datos <code>socket.end(data)</code>.</p>
+<p>La documentación del módulo <code>net</code> puede verse en:</p>
+<p>  <a href="../node_apidoc/net.html">/node_apidoc/net.html</a></p>
+<p>Para calcular la fecha puedes usar <code>new Date()</code> y luego llamar a algunos métodos específicos:</p>
+<pre><code class="lang-js">date.getFullYear()
+date.getMonth()     <span class="hljs-comment">// empieza en 0</span>
+date.getDate()      <span class="hljs-comment">// devuelve día del mes, empieza en 1</span>
+date.getHours()
+date.getMinutes()
+</code></pre>
+<p>Otra opción más intrépida es usar el paquete <code>strftime</code> disponible en npm. La función <code>strftime(formato, fecha)</code> recibe un formato de fecha similar al <code>date</code> de UNIX. Más información de strftime en: <a href="https://github.com/samsonjs/strftime">https://github.com/samsonjs/strftime</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="juggling_async.es.html" class="u-inline-block all-caps">JUGGLING ASYNC
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_file_server.es.html" class="u-inlineBlock all-caps">HTTP FILE SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

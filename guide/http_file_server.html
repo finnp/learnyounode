@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_file_server.html" >English</a></li>
+        <li><a href="http_file_server.es.html" >Español</a></li>
+        <li><a href="http_file_server.fr.html" >Français</a></li>
+        <li><a href="http_file_server.ja.html" >日本語</a></li>
+        <li><a href="http_file_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_file_server.ru.html" >Русский</a></li>
+        <li><a href="http_file_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_file_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="time_server.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="http_uppercaserer.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP FILE SERVER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">11 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Write an HTTP <strong>server</strong> that serves the same text file for each request it receives.</p>
+<p>Your server should listen on the port provided by the first argument to your program.</p>
+<p>You will be provided with the location of the file to serve as the second command-line argument. You <strong>must</strong> use the <code>fs.createReadStream()</code> method to stream the file contents to the response.</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>Because we need to create an HTTP server for this exercise rather than a generic TCP server, we should use the <code>http</code> module from Node core. Like the <code>net</code> module, <code>http</code> also has a method named <code>http.createServer()</code> but this one creates a server that can talk HTTP.</p>
+<p><code>http.createServer()</code> takes a callback that is called once for each connection received by your server. The callback function has the signature:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(request, response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Where the two arguments are objects representing the HTTP request and the corresponding response for this request. <code>request</code> is used to fetch properties, such as the header and query-string from the request while <code>response</code> is for sending data to the client, both headers and body.</p>
+<p>Both <code>request</code> and <code>response</code> are also Node streams! Which means that you can use the streaming abstractions to send and receive data if they suit your use-case.</p>
+<p><code>http.createServer()</code> also returns an instance of your <code>server</code>. You must call <code>server.listen(portNumber)</code> to start listening on a particular port.</p>
+<p>A typical Node HTTP server looks like this:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
+  <span class="hljs-comment">// request handling logic...</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>Documentation on the <code>http</code> module can be found by pointing your browser here:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p>The <code>fs</code> core module also has some streaming APIs for files. You will need to use the <code>fs.createReadStream()</code> method to create a stream representing the file you are given as a command-line argument. The method returns a stream object which you can use <code>src.pipe(dst)</code> to pipe the data from the <code>src</code> stream to the <code>dst</code> stream. In this way you can connect a filesystem stream with an HTTP response stream.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="time_server.html" class="u-inline-block all-caps">TIME SERVER
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_uppercaserer.html" class="u-inlineBlock all-caps">HTTP UPPERCASERER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

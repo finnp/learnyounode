@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="zh-tw">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_uppercaserer.html" >English</a></li>
+        <li><a href="http_uppercaserer.es.html" >Español</a></li>
+        <li><a href="http_uppercaserer.fr.html" >Français</a></li>
+        <li><a href="http_uppercaserer.ja.html" >日本語</a></li>
+        <li><a href="http_uppercaserer.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_uppercaserer.ru.html" >Русский</a></li>
+        <li><a href="http_uppercaserer.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_uppercaserer.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_file_server.zh-tw.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-tw.html">learnyounode</a>
+      <a href="http_json_api_server.zh-tw.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP UPPERCASERER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">12 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>撰寫一個只能接收 POST 請求的 HTTP 伺服器，這個伺服器會把收到的 POST 內容字元轉換成大寫，並回應給客戶端。</p>
+<p>您的伺服器應該監聽在第一個參數所給予的 port 上。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>不受限的使用 <code>request</code> 及 <code>response</code> 物件的串流能力，這個習題會更簡單一點。</p>
+<p>有兩個不同的 npm 套件可以被用來 <strong>「轉換」</strong> 傳入的串流資料。在這個習題中， <code>through2-map</code> 套件提供最簡單的 API。</p>
+<p><code>through2-map</code> 允許您只用一個傳入、回應一堆資料的簡單的函式建立一個 <em>transform stream</em> 。 <em>transform stream</em> 指的是會對資料進行處理或運算的串流，不是只有單純的 input/output，進去的資料會被處理過後才會輸出。 <code>through2-map</code> 這個套件可以對串流的傳輸內容做類似 <code>Array#map()</code> 的功能。</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> map = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2-map'</span>)
+inStream.pipe(map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chunk)</span> </span>{
+  <span class="hljs-keyword">return</span> chunk.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)
+})).pipe(outStream)
+</code></pre>
+<p>在前面的例子中，從 <code>inStream</code> 傳入的資料被轉換成 String （如果還沒轉換的話）， 字元順序會被反轉，並把結果傳到 <code>outStream</code> 。所以我們必須先把一大堆字元反轉！記得資料的大小是取決於上游，而且您對這些傳入資料的控制權不大。</p>
+<p>要安裝 <code>through2-map</code> ，輸入：</p>
+<pre><code class="lang-sh">$ npm install through2-map
+</code></pre>
+<p>如果您沒有網路連線，可以簡單地建立一個 <code>node_modules</code> 目錄，並把 learnyounode 安裝目錄下，您要用的套件目錄都複製到 <code>node_modules</code> 目錄當中。</p>
+<p>  <a href="../node_modules/through2-map">/node_modules/through2-map</a></p>
+<p>要閱讀這跟著 learnyounode 安裝到系統上的 through2-map 模組文件，可以在瀏覽器中打開這個頁面：</p>
+<p>  <a href="../docs/through2-map.html">/docs/through2-map.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_file_server.zh-tw.html" class="u-inline-block all-caps">HTTP FILE SERVER
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_json_api_server.zh-tw.html" class="u-inlineBlock all-caps">HTTP JSON API SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

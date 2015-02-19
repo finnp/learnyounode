@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="filtered_ls.html" >English</a></li>
+        <li><a href="filtered_ls.es.html" >Español</a></li>
+        <li><a href="filtered_ls.fr.html" >Français</a></li>
+        <li><a href="filtered_ls.ja.html" >日本語</a></li>
+        <li><a href="filtered_ls.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="filtered_ls.ru.html" >Русский</a></li>
+        <li><a href="filtered_ls.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="filtered_ls.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_async_io.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="make_it_modular.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">FILTERED LS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">5 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Create a program that prints a list of files in a given directory, filtered by the extension of the files. You will be provided a directory name as the first argument to your program (e.g. &#39;/path/to/dir/&#39;) and a file extension to filter by as the second argument.</p>
+<p>For example, if you get &#39;txt&#39; as the second argument then you will need to filter the list to only files that <strong>end with .txt</strong>. Note that the second argument <em>will not</em> come prefixed with a &#39;.&#39;.</p>
+<p>The list of files should be printed to the console, one file per line. You <strong>must</strong> use asynchronous I/O.</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>The <code>fs.readdir()</code> method takes a pathname as its first argument and a callback as its second. The callback signature is:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, list)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>where <code>list</code> is an array of filename strings.</p>
+<p>Documentation on the <code>fs</code> module can be found by pointing your browser here:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>You may also find node&#39;s <code>path</code> module helpful, particularly the <code>extname</code> method.</p>
+<p>Documentation on the <code>path</code> module can be found by pointing your browser here:
+  <a href="../node_apidoc/path.html">/node_apidoc/path.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_async_io.html" class="u-inline-block all-caps">MY FIRST ASYNC I/O!
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="make_it_modular.html" class="u-inlineBlock all-caps">MAKE IT MODULAR
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

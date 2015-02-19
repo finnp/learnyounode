@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="time_server.html" >English</a></li>
+        <li><a href="time_server.es.html" >Español</a></li>
+        <li><a href="time_server.fr.html" >Français</a></li>
+        <li><a href="time_server.ja.html" >日本語</a></li>
+        <li><a href="time_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="time_server.ru.html" >Русский</a></li>
+        <li><a href="time_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="time_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="juggling_async.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="http_file_server.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">SERVEUR DE TEMPS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">10 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Écrivez un <strong>serveur de temps TCP</strong> !</p>
+<p>Votre serveur devrait attendre des connexions TCP entrantes sur le port dont
+le numéro vous sera fourni comme premier argument en ligne de commande.  À
+chaque connexion, vous écrirez sur la socket la date et l’heure courante, en
+mode 24 heures, selon le format suivant :</p>
+<pre><code><span class="hljs-string">"YYYY-MM-DD hh:mm"</span>
+</code></pre><p>suivi d’un caractère <strong>saut de ligne</strong> (<em>newline</em>).  Les mois, jour, heures et
+minutes doivent absolument être présentés sur 2 chiffres avec, si besoin, un
+<em>zéro préfixe</em>.  Par exemple :</p>
+<pre><code><span class="hljs-string">"2013-07-06 17:42"</span>
+</code></pre><hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Pour cet exercice, nous allons créer un serveur TCP brut.  Il n’y a pas de
+besoin HTTP sur ce coup, nous allons donc utiliser le module <code>net</code>, un autre
+des modules noyaux de Node, qui fournit toutes les fonctions réseau de base.</p>
+<p>Le module <code>net</code> fournit une méthode appelée <code>net.createServer()</code>, qui prend
+une fonction de rappel.  Contrairement à la plupart des fonctions de rappel
+de Node, celle utilisée par <code>createServer</code> peut être appelée plus d’une fois.
+Chaque connexion reçue par votre serveur déclenche un appel à votre fonction
+de rappel.  Elle a la signature suivante :</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span><span class="hljs-params">(socket)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>net.createServer()</code> renvoie également une instance de votre serveur. Vous
+devrez appeler <code>server.listen(portNumber)</code> pour démarrer l’écoute sur un
+port particulier.</p>
+<p>Un serveur TCP Node ressemble classiquement à ceci :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>);
+<span class="hljs-keyword">var</span> server = net.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(socket)</span> </span>{
+  <span class="hljs-comment">// logique de gestion de la socket</span>
+});
+server.listen(<span class="hljs-number">8000</span>);
+</code></pre>
+<p>Souvenez-vous que le numéro de port vous sera fourni comme premier argument
+sur la ligne de commande.</p>
+<p>L’objet <code>socket</code> contient un tas de méta-données relatives à la connexion,
+mais se comporte aussi comme un flux duplex Node, c’est-à-dire qu’on peut
+lire et écrire dessus.  Pour cet exercice, vous aurez juste besoin d’y écrire
+et de fermer la socket.</p>
+<p>Utilisez <code>socket.write(data)</code> pour écrire des données sur la socket, et
+<code>socket.end()</code> pour fermer la socket.  Il est aussi possible de passer un
+dernier bloc de données à <code>.end()</code>, ce qui peut simplifier votre exercice
+comme ceci : <code>socket.end(data)</code>.</p>
+<p>La documentation hors-ligne pour le module noyau <code>net</code> peut être consultée
+à l’adresse suivante :</p>
+<p>  <a href="../node_apidoc/net.html">/node_apidoc/net.html</a></p>
+<p>Pour créer la date, vous aurez besoin de construire un format spécial à partir
+d’un objet obtenu par un appel à <code>new Date()</code>.  Les méthodes que vous pourrez
+trouver utiles sont :</p>
+<pre><code class="lang-js">date.getFullYear()
+date.getMonth()     <span class="hljs-comment">// démarre 0 !</span>
+date.getDate()      <span class="hljs-comment">// renvoie le jour du mois</span>
+date.getHours()
+date.getMinutes()
+</code></pre>
+<p>Si vous vous sentez d’humeur aventureuse, vous pouvez aussi utiliser le module
+<code>strftime</code>, disponible via npm.  La fonction <code>strftime(fmt, date)</code> accepte les
+mêmes formats de date que la commande Unix <code>date</code>.  Vous pouvez en apprendre
+davantage sur <code>strftime</code> ici :</p>
+<p>  <a href="https://github.com/samsonjs/strftime">https://github.com/samsonjs/strftime</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="juggling_async.fr.html" class="u-inline-block all-caps">JONGLER AVEC L&#x27;ASYNCHRONE
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_file_server.fr.html" class="u-inlineBlock all-caps">SERVEUR DE FICHIERS HTTP
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

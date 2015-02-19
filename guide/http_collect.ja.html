@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_collect.html" >English</a></li>
+        <li><a href="http_collect.es.html" >Español</a></li>
+        <li><a href="http_collect.fr.html" >Français</a></li>
+        <li><a href="http_collect.ja.html" >日本語</a></li>
+        <li><a href="http_collect.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_collect.ru.html" >Русский</a></li>
+        <li><a href="http_collect.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_collect.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_client.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="juggling_async.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP 集める</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">8 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>一つ目のコマンドラインの引数が URL 文字列である、 HTTP のデーターをロード (※)するアプリを書いてください。サーバからの<strong>全て</strong>（最初のイベントだけではなく）のデータを集めて二行をコンソールに書き出してください。</p>
+<p>一行目は文字数です。二行目はサーバから受け取った全てのデータを文字列で出力してください。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>二つの方法があります：</p>
+<p><strong>1)</strong> 全ての <code>data</code> イベントの結果を集めて <code>end</code> イベントの時に書き出してください。</p>
+<p><strong>2)</strong> サードパーティのパッケージを使ってもいいです。以下の二つのパッケージはこの問題に関して役に立ちます。 <code>bl</code> (Buffer List) や <code>concat-stream</code>。いずれかを選んでください。</p>
+<p>  <a href="http://npm.im/bl">http://npm.im/bl</a>
+  <a href="http://npm.im/concat-stream">http://npm.im/concat-stream</a></p>
+<p>Node.js のパッケージをインストールするために Node.js のパッケージ管理ツールである <code>npm</code>を使ってください。コマンドラインに以下を書いてください：</p>
+<pre><code class="lang-sh">$ npm install bl
+</code></pre>
+<p>上記を実行すると、指定されたパッケージの一番新しいバーションをダウンロードして <code>node_modules</code> という新しいフォルダに格納します。そのフォルダにあるパッケージは <code>require</code> を使って <code>.</code> の接頭辞なしで利用できます：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> bl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bl'</span>)
+</code></pre>
+<p>メモ： Node.js のロードの優先順位は、まずNode.jsのコア、その後は上述の <code>node_modules</code>のフォルダの順です。</p>
+<p>インターネットに接続出来ない場合には <code>node_modules</code> に<a href="../node_modules">/node_modules</a>のフォルダのパッケージをコピーしてください：</p>
+<p>  <a href="../node_modules/bl">/node_modules/bl</a>
+  <a href="../node_modules/concat-stream">/node_modules/concat-stream</a></p>
+<p><code>bl</code> にも <code>concat-stream</code> にも <code>Stream</code> を入力として <em>pipe</em> (※) できます。以下の例では<code>Stream</code> が終わってからコールバックが呼ばれています：
+※ pipe: Stream中に流れるデータが次々と橋渡しされる関数を登録すること。</p>
+<pre><code class="lang-js">response.pipe(bl(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+<span class="hljs-comment">// or</span>
+response.pipe(concatStream(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+</code></pre>
+<p>メモ：もしかしたら <code>Buffer</code> から <code>data.toString()</code> をつかって文字列に変換する必要があるかもしれません。</p>
+<p>モジュールのドキュメントは <code>learnyounode</code> と一緒にインストールされているのでブラウザーでこのリンクを見てください:</p>
+<p>  <a href="../docs/bl.html">/docs/bl.html</a>
+  <a href="../docs/concat-stream.html">/docs/concat-stream.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_client.ja.html" class="u-inline-block all-caps">HTTP クライアント
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="juggling_async.ja.html" class="u-inlineBlock all-caps">ASYNCジャグリング
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

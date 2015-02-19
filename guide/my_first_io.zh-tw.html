@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="zh-tw">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.zh-tw.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-tw.html">learnyounode</a>
+      <a href="my_first_async_io.zh-tw.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MY FIRST I/O!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>撰寫一個程式，使用 <strong>同步（Synchronous）</strong> 操作方式的檔案系統 API。這個程式要開啟指定檔案，然後讀取並計算該檔案內容的行數，最後利用 console （標準輸出 stdout）方法將計算結果輸出到終端機命令列，輸出的結果就像是使用下列終端機命令一樣：</p>
+<pre><code>cat 檔案路徑 | wc -l
+</code></pre><p>程式的第一個命令列參數將是檔案的完整路徑。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>為了進行檔案系統（filesystem）的操作，你必須使用 Node.js 內建的 <code>fs</code> 核心模組。要載入此核心模祖，或任何全域（Global）的模組，您可以使用以下的語法：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>現在，您可以透過變數 <code>fs</code> 以使用 <code>fs</code> 模組的完整功能。因為 <code>fs</code> 模組已經被載入，並存放在名為 <code>fs</code> 的變數中。</p>
+<p>fs 模組裡所有同步（ synchronous ，或稱為阻塞， blocking ）的功能都會以「Sync」結尾。您需要使用 <code>fs.readFileSync(&#39;檔案路徑&#39;)</code> 這個 API 去讀取一個檔案。這個 API 將會 <em>返回</em> 一個包含完整檔案內容的 <code>Buffer</code> 物件。</p>
+<p>要閱讀並參考 <code>fs</code> 模組的說明文件，可以在瀏覽器中打開這個頁面：</p>
+<p>  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>任何的大量資料，無論編碼是 ASCII、二位元或其他的格式， Node.js 都可以用 <code>Buffer</code> 物件有效地儲存和操作。使用 <code>Buffer</code> 本身的 <code>toString()</code> 方法，就可以簡單的把 <code>Buffer</code> 物件的內容轉換成可見字串（String）。如 <code>var str = buf.toString()</code> 。</p>
+<p>要閱讀並參考關於 Buffer 物件的文件，可以在瀏覽器中打開這個頁面：
+  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>如果您正在尋找計算字串中換行符號的數目的方法，最簡單的做法是計算換行符號。請記得 Javascript 中是使用「\n」表示換行符號，所以你可以用 <code>String</code> 的 <code>.split()</code> 方法，對字串所有的換行符號處進行切割，並生成一個多字串組成的陣列（Array），然後由 Array 的大小得知行數 。注意，測試檔案的最後一行不會以換行符號「\n」結尾，所以使用這個方法得到的 Array 元素數目（也就是行數）將會比換行符號多一個。</p>
+<p>注：終端機命令 <code>wc -l</code> 是計算換行符號的數量，並非是真實內容行數。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.zh-tw.html" class="u-inline-block all-caps">BABY STEPS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.zh-tw.html" class="u-inlineBlock all-caps">MY FIRST ASYNC I/O!
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

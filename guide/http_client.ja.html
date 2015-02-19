@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_client.html" >English</a></li>
+        <li><a href="http_client.es.html" >Español</a></li>
+        <li><a href="http_client.fr.html" >Français</a></li>
+        <li><a href="http_client.ja.html" >日本語</a></li>
+        <li><a href="http_client.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_client.ru.html" >Русский</a></li>
+        <li><a href="http_client.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_client.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="make_it_modular.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="http_collect.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP クライアント</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">7 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>一つ目のコマンドラインの引数が URL 文字列である、 HTTP のデーターをロード (※)するアプリを書いてください。<code>&quot;data&quot;</code> イベント<strong>一つ一つ</strong>の文字列を改行をつかってコンソールに書き出してください。</p>
+<p>※これからは「GET リクエスト」と記述します。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>この例題のために <code>http</code> の Node.js モジュールが必要になります。</p>
+<p><code>http</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p><code>http.get()</code> という関数は簡単な GET リクエストのショートカットです。解決方法をシンプルするのに役に立つと思います。 <code>http.get()</code> の一つ目の引数は GET リクエストの URL です。二つ目はコールバック関数です。</p>
+<pre><code class="lang-js">http.get(url, callback)
+</code></pre>
+<p><code>http</code> はよくあるイディオム  <code>(error, result)</code> と違って以下のようなコールバックになります：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>response</code> のオブジェクトは Node.js の <strong>Stream</strong> です。Stream はイベントを発行するオブジェクトと考えてよいです。 Stream における大切な三つのイベントは： <code>data</code> 、 <code>error</code> と <code>end</code> です。各イベント時にデータを受け取る為には、以下のようにリスナーを設定します。</p>
+<pre><code class="lang-js">response.on(<span class="hljs-string">"data"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> })
+</code></pre>
+<p><code>data</code> イベントは処理できるデータチャンク(※)が現れた時に発行されます。チャンクのサイズはデータの出元によって変わります。
+※ データの一部分。Stream ではこれが断続的に提供されます。</p>
+<p><code>http.get()</code> の <code>response</code> の Stream オブジェクトには <code>setEncoding()</code> という関数があります。それを <code>utf8</code> という値を使って呼ぶとデータイベントの <code>Buffer</code> の代わりに文字列が渡ってきます。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="make_it_modular.ja.html" class="u-inline-block all-caps">モジュラーにしましょう
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_collect.ja.html" class="u-inlineBlock all-caps">HTTP 集める
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

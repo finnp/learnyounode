@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_file_server.html" >English</a></li>
+        <li><a href="http_file_server.es.html" >Español</a></li>
+        <li><a href="http_file_server.fr.html" >Français</a></li>
+        <li><a href="http_file_server.ja.html" >日本語</a></li>
+        <li><a href="http_file_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_file_server.ru.html" >Русский</a></li>
+        <li><a href="http_file_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_file_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="time_server.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="http_uppercaserer.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">SERVEUR DE FICHIERS HTTP</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">11 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Écrivez un <strong>serveur</strong> HTTP qui servira le même fichier texte pour toute
+requête reçue.</p>
+<p>Votre serveur devrait écouter sur un port dont le numéro vous sera fourni en
+premier argument de ligne de commande.</p>
+<p>Vous recevrez en deuxième argument de ligne de commande le chemin complet du
+fichier que vous devrez servir.  Vous <strong>devez</strong> utiliser la méthode
+<code>fs.createReadStream()</code> pour <em>streamer</em> le contenu du fichier dans la réponse.</p>
+<hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Parce que nous avons besoin d’un serveur HTTP pour cet exercice, et non d’un
+serveur TCP générique, nous utiliserons le module noyau <code>http</code>.  Tout comme le
+module <code>net</code>, <code>http</code> fournit une méthode <code>http.createServer()</code>, mais celle-ci
+crée un serveur qui comprend le protocole HTTP.</p>
+<p><code>http.createServer()</code> prend une fonction de rappel appelée une fois par
+connexion reçue par la serveur.  La fonction de rappel a la signature :</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span><span class="hljs-params">(request, response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Les deux arguments sont des objets représentant la requête HTTP et la
+réponse correspondant à cette requête.  <code>request</code> est utilisée pour récupérer
+des propriétés, telles que les en-têtes et la <em>query string</em> de la requête,
+tandis que <code>response</code> sert à renvoyer des données au client, tant les en-têtes
+que le corps de contenu.</p>
+<p><code>request</code> et <code>response</code> sont toutes les deux des flux Node !  Ce qui signifie
+que vous pouvez utiliser les mécanismes de flux pour envoyer ou recevoir des
+données, lorsque cela vous arrange.</p>
+<p><code>http.createServer()</code> renvoie une instance de votre serveur, et vous devrez
+appeler <code>server.listen(portNumber)</code> pour commencer à écouter sur un port
+particulier.</p>
+<p>Un serveur HTTP Node ressemble classiquement à ceci :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(req, res)</span> </span>{
+  <span class="hljs-comment">// logique de traitement de la requête…</span>
+});
+server.listen(<span class="hljs-number">8000</span>);
+</code></pre>
+<p>La documentation du module <code>http</code> peut être consultée hors-ligne à l’adresse
+suivante :</p>
+<p>  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p>Le module noyau <code>fs</code> fournit des APIs orientées flux pour les fichiers.  Vous
+aurez besoin d’utiliser la méthode <code>fs.createReadStream()</code> pour créer un flux
+représentant le fichier dont le chemin vous aura été fourni en ligne de
+commande.  Cette méthode renvoie un objet flux sur lequel vous pouvez appeler
+<code>src.pipe(dest)</code> pour connecter les données lues sur le flux <code>src</code> à une
+écriture sur le flux <code>dst</code>.  De cette façon, vous pouvez connecter un flux issu
+du système de fichier à votre flux de réponse HTTP.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="time_server.fr.html" class="u-inline-block all-caps">SERVEUR DE TEMPS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_uppercaserer.fr.html" class="u-inlineBlock all-caps">CONVERTISSEUR EN MAJUSCULES HTTP
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

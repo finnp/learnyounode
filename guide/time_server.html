@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="time_server.html" >English</a></li>
+        <li><a href="time_server.es.html" >Español</a></li>
+        <li><a href="time_server.fr.html" >Français</a></li>
+        <li><a href="time_server.ja.html" >日本語</a></li>
+        <li><a href="time_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="time_server.ru.html" >Русский</a></li>
+        <li><a href="time_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="time_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="juggling_async.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="http_file_server.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">TIME SERVER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">10 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Write a <strong>TCP time server</strong>!</p>
+<p>Your server should listen to TCP connections on the port provided by the first argument to your program. For each connection you must write the current date &amp; 24 hour time in the format:</p>
+<pre><code><span class="hljs-string">"YYYY-MM-DD hh:mm"</span>
+</code></pre><p>followed by a <strong>newline</strong> character. Month, day, hour and minute must be <em>zero-filled</em> to 2 integers. For example:</p>
+<pre><code><span class="hljs-string">"2013-07-06 17:42"</span>
+</code></pre><hr>
+<h2 id="hints">HINTS</h2>
+<p>For this exercise we&#39;ll be creating a raw TCP server. There&#39;s no HTTP involved here so we need to use the <code>net</code> module from Node core which has all the basic networking functions.</p>
+<p>The <code>net</code> module has a method named <code>net.createServer()</code> that takes a callback function. Unlike most callbacks in Node, the callback used by <code>createServer()</code> is called more than once. Every connection received by your server triggers another call to the callback. The callback function has the signature:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(socket)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>net.createServer()</code> also returns an instance of your <code>server</code>. You must call <code>server.listen(portNumber)</code> to start listening on a particular port.</p>
+<p>A typical Node TCP server looks like this:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>)
+<span class="hljs-keyword">var</span> server = net.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(socket)</span> </span>{
+  <span class="hljs-comment">// socket handling logic</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>Remember to use the port number supplied to you as the first command-line argument.</p>
+<p>The <code>socket</code> object contains a lot of meta-data regarding the connection, but it is also a Node duplex Stream, in that it can be both read from, and written to. For this exercise we only need to write data and then close the socket.</p>
+<p>Use <code>socket.write(data)</code> to write data to the socket and <code>socket.end()</code> to close the socket. Alternatively, the <code>.end()</code> method also takes a data object so you can simplify to just: <code>socket.end(data)</code>.</p>
+<p>Documentation on the <code>net</code> module can be found by pointing your browser here:</p>
+<p>  <a href="../node_apidoc/net.html">/node_apidoc/net.html</a></p>
+<p>To create the date, you&#39;ll need to create a custom format from a <code>new Date()</code> object. The methods that will be useful are:</p>
+<pre><code class="lang-js">date.getFullYear()
+date.getMonth()     <span class="hljs-comment">// starts at 0</span>
+date.getDate()      <span class="hljs-comment">// returns the day of month</span>
+date.getHours()
+date.getMinutes()
+</code></pre>
+<p>Or, if you want to be adventurous, use the <code>strftime</code> package from npm. The <code>strftime(fmt, date)</code> function takes date formats just like the unix <code>date</code> command. You can read more about strftime at: <a href="https://github.com/samsonjs/strftime">https://github.com/samsonjs/strftime</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="juggling_async.html" class="u-inline-block all-caps">JUGGLING ASYNC
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_file_server.html" class="u-inlineBlock all-caps">HTTP FILE SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

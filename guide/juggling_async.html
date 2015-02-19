@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="juggling_async.html" >English</a></li>
+        <li><a href="juggling_async.es.html" >Español</a></li>
+        <li><a href="juggling_async.fr.html" >Français</a></li>
+        <li><a href="juggling_async.ja.html" >日本語</a></li>
+        <li><a href="juggling_async.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="juggling_async.ru.html" >Русский</a></li>
+        <li><a href="juggling_async.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="juggling_async.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_collect.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="time_server.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">JUGGLING ASYNC</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">9 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>This problem is the same as the previous problem (HTTP COLLECT) in that you need to use <code>http.get()</code>. However, this time you will be provided with <strong>three</strong> URLs as the first three command-line arguments.</p>
+<p>You must collect the complete content provided to you by each of the URLs and print it to the console (stdout). You don&#39;t need to print out the length, just the data as a String; one line per URL. The catch is that you <strong>must</strong> print them out in the same order as the URLs are provided to you as command-line arguments.</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>Don&#39;t expect these three servers to play nicely! They are not going to give you complete responses in the order you hope, so you can&#39;t naively just print the output as you get it because they will be out of order.</p>
+<p>You will need to queue the results and keep track of how many of the URLs have returned their entire contents. Only once you have them all, you can print the data to the console.</p>
+<p>Counting callbacks is one of the fundamental ways of managing async in Node. Rather than doing it yourself, you may find it more convenient to rely on a third-party library such as <a href="http://npm.im/async">async</a> or <a href="http://npm.im/after">after</a>. But for this exercise, try and do it without any external helper library.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_collect.html" class="u-inline-block all-caps">HTTP COLLECT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="time_server.html" class="u-inlineBlock all-caps">TIME SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

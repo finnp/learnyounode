@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_async_io.html" >English</a></li>
+        <li><a href="my_first_async_io.es.html" >Español</a></li>
+        <li><a href="my_first_async_io.fr.html" >Français</a></li>
+        <li><a href="my_first_async_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_async_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_async_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_async_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_async_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_io.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="filtered_ls.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MY FIRST ASYNC I/O!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">4 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escribe un programa que use operación de sistema de archivos asíncrona para leer un archivo e imprimir en consola el número de líneas (terminadas en &#39;\n&#39;) que contiene. Similar a  ejecutar <code>cat file | wc -l</code>.</p>
+<p>El programa recibirá la ruta al archivo como único argumento.</p>
+<hr>
+<h1 id="pistas">PISTAS</h1>
+<p>La resolución es similar al problema anterior pero esta vez usaremos <strong>the Node.js way</strong>: asíncronicamente (async).</p>
+<p>Vamos a sustituir <code>fs.readFileSync()</code> por <code>fs.readFile()</code> y en lugar de esperar que retorne un valor, vamos a tener que procesar el resultado con una función de callback que se invoca al terminar la lectura del archivo.</p>
+<p>La forma abitual de usar callbacks en Node.js es con la siguiente firma:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(error, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Puedes validar si ocurrió un error controlando si el primer parámetro es nulo. Si no hay errores, &#39;data&#39; será un objeto Buffer de Node.js. 
+Al igual que pasa con <code>readFileSync()</code>, puedes pasar &#39;utf8&#39; como segundo parámetro y luego el callback como tercero de modo de que data sea un <code>String</code> y no un <code>Buffer</code>.</p>
+<p>Puedes leer la documentación del módulo <code>fs</code> en:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_io.es.html" class="u-inline-block all-caps">MY FIRST I/O!
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="filtered_ls.es.html" class="u-inlineBlock all-caps">FILTERED LS
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

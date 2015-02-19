@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_file_server.html" >English</a></li>
+        <li><a href="http_file_server.es.html" >Español</a></li>
+        <li><a href="http_file_server.fr.html" >Français</a></li>
+        <li><a href="http_file_server.ja.html" >日本語</a></li>
+        <li><a href="http_file_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_file_server.ru.html" >Русский</a></li>
+        <li><a href="http_file_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_file_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="time_server.ru.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ru.html">learnyounode</a>
+      <a href="http_uppercaserer.ru.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP FILE SERVER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">11 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Реализуйте HTTP сервер, который отдает одинаковый файл для всех входящих запросов.</p>
+<p>Сервер должен слушать порт, который будет передан в качестве первого аргумента командной строки.</p>
+<p>Файл, который нужно возвращать будет передан в качестве второго аргумента командной строки. Вы <strong>должны</strong> использовать <code>fs.createReadStream()</code> метод для отдачи содержимого файла.</p>
+<hr>
+<h2 id="-">ИНФОРМАЦИЯ</h2>
+<p>В связи с тем, что в этом задании нам нужно создать HTTP сервер, а не низкоуровневый TCP сервер, то мы должны использовать встроенный <code>http</code> модуль Node. Так же как и <code>net</code> модуль, <code>http</code> имеет метод <code>http.createServer()</code>, но в этом случае он создает сервер, который может общаться по HTTP.</p>
+<p><code>http.createServer()</code> принимает функцию, которая будет вызвана один раз для каждого соединения к серверу. Она имеет следующую сигнатуру:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(request, response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>где два аргумента это объекты, представляющие HTTP запрос и соответствующий ответ на этот запрос. <code>request</code> используется для получения таких свойств запроса, как заголовок или строка-зпроса, в то время, как <code>response</code> нужен для отправки данных клиенту, как заголовков, так и тела ответа.</p>
+<p>Оба <code>request</code> и <code>response</code> являются потоками Node! Это значит что Вы может как посылать, так и принимать потоки данных, если это подходит для Вашего случая.</p>
+<p><code>http.createServer</code> возвращает экземпляр Вашего сервера. Вы должны вызвать <code>server.listen(portNumber)</code> для того чтобы стартовать сервер на заданом порту.</p>
+<p>Типичный Node HTTP сервер выглядит так:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
+  <span class="hljs-comment">// обработка запросов</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>Документацию для <code>http</code> модуля вы сможете найти набрав в браузере:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p>Встроенный модуль <code>fs</code> также имеет потоквые API для файлов. Вы должны использовать метод <code>fs.createReadStream()</code> для создания потока представляющий файл, который Вы получите в качестве аргумента командной строки. Этот метод возвращает потоковый объект (stream) который Вы можете использовать как <code>src.pipe(dst)</code> для того чтобы направить данные из потока <code>str</code> в поток <code>dst</code>. В нашем случае вы можете связать поток файловой системы с потоком HTTP.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="time_server.ru.html" class="u-inline-block all-caps">TIME SERVER
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_uppercaserer.ru.html" class="u-inlineBlock all-caps">HTTP UPPERCASERER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

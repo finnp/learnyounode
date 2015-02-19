@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="make_it_modular.html" >English</a></li>
+        <li><a href="make_it_modular.es.html" >Español</a></li>
+        <li><a href="make_it_modular.fr.html" >Français</a></li>
+        <li><a href="make_it_modular.ja.html" >日本語</a></li>
+        <li><a href="make_it_modular.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="make_it_modular.ru.html" >Русский</a></li>
+        <li><a href="make_it_modular.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="make_it_modular.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="filtered_ls.ru.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ru.html">learnyounode</a>
+      <a href="http_client.ru.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MAKE IT MODULAR</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">6 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Эта задача очень похожа на предыдущую, с той лишь разницей, что она знакомит нас концепцией <strong>модулей</strong>. Вы должны создать два файла, чтобы решить данную задачу. </p>
+<p>Реализуйте программу, которая выводит список отфильтрованных по расширенению файлов в заданой директории. Имя директории (&#39;/path/to/dir/&#39;) будет передано в качестве первого аргумента к вашей программе, а расширение файла для фильтрации в качестве второго.</p>
+<p>Вы должны создать <em>модуль</em>, который будет делать практически всю работу. Модуль должен <em>экспоритровать</em> функцию, которая принимает три параметра: имя диретории, расширение файла и функцию обратного вызова, в заданом порядке. Расширение файла должено быть передано точно таким же, каким оно было получено Вашей программой. Не преобразуйте его в RegExp, не добавляйте &#39;.&#39; в начало, просто передайте его в Ваш модуль, где и осуществляйте все необходимые операции для того чтобы фильтр заработал.</p>
+<p>Функция обратного вызова должна быть вызвана в свойственном для Node.js соглашении: node(err, data). Это соглашение гласит, что если ошибки нет, то первый аргумент функции будет равен null, а второй будет содержать данные. В данном упражнении в качестве данных будет выступать список файлов, в виде массива. Если Вы получили ошибку, предположим из вызова <code>fs.readdir()</code>, то функция обратного вызова должна быть вызвана только с ошибкой, в качестве первого аргумента.</p>
+<p>Вы <strong>не должны</strong> выводить список в консоль напрямую из вашего модуля, это должна делать ваша вызываемая программа.</p>
+<p>Если вы получили ошибку из модуля, то просто проверьте ее наличие в вашей программе и выведите понятное сообщение об ошибке в консоль.</p>
+<p>Ваш модуль должен следовать следующим соглашениям:</p>
+<ol>
+<li>Эскпортировать функцию, принимающую аргументы в точности, как описано выше.</li>
+<li>Вызывать фукцию обратного вызова один раз с ошибкой или данными, как оговаривалось.</li>
+<li>Не должен изменять глобальные переменные или stdout.</li>
+<li>Отлавливать все ошибки, которые могут возникнуть и передавать их в функцию обратного вызова.</li>
+</ol>
+<p>Преимущество использования соглашений состоит в том, что Ваш модуль сможет использовать кто угодно, кто ожидает такое поведение от модуля. В нашем случае его сможет использовать другой ученик learnyounode или тот кто проверяет это задание, и это просто будет работать.</p>
+<hr>
+<h2 id="-">ИНФОРМАЦИЯ</h2>
+<p>Создайте модуль с помощью создания нового файла в котором содержится только функция чтения и фильтрации переданной директории. Для <em>экспортирования</em> данной функции присвойте ее к объекту <code>module.exports</code>, перезаписав тем самым то, что там было ранее.</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Или вы можете использовать именованную функцию и присвоить только ее имя.</p>
+<p>Для использования Вашего модуля в вызываемой программе, воспользуйтесь <code>require()</code> точно так же, как вы делали это для получения <code>fs</code> модуля <code>require(&#39;fs&#39;)</code>. С той лишь разницей, что для локальных модулей Вы должны добавить префикс &#39;./&#39; в начале. Например, если файл называется mymodule.js, то:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mymodule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./mymodule.js'</span>)
+</code></pre>
+<p>&#39;.js&#39; расширение здесь необязательное и Вы будете часто наблюдать, как оно опускается.</p>
+<p>Сейчас вы получили <code>module.exports</code> из Вашего модуля присвоенный к <code>mymodule</code> переменной. И если вы экспортировали функцию, то mymodule является этой функцией, которую вы можете вызвать.</p>
+<p>Так же примите во внимание, что характерным является проверка ошибки и прерывание сценария путем возвращения функции обратного вызова с ошибкой:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span> <span class="hljs-params">(callback)</span> </span>{
+  foo(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{
+    <span class="hljs-keyword">if</span> (err)
+      <span class="hljs-keyword">return</span> callback(err) <span class="hljs-comment">// прерываем сценарий, возвращаем ошибку</span>
+
+    <span class="hljs-comment">// ... тут ошибок нет, продолжаем работу с `data`</span>
+
+    <span class="hljs-comment">// ... вызываем callback с переданым `null` в качестве аргумента-ошибки</span>
+
+    callback(<span class="hljs-literal">null</span>, data)
+  })
+}
+</code></pre>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="filtered_ls.ru.html" class="u-inline-block all-caps">FILTERED LS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_client.ru.html" class="u-inlineBlock all-caps">HTTP CLIENT
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

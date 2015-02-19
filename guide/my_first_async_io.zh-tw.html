@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="zh-tw">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_async_io.html" >English</a></li>
+        <li><a href="my_first_async_io.es.html" >Español</a></li>
+        <li><a href="my_first_async_io.fr.html" >Français</a></li>
+        <li><a href="my_first_async_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_async_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_async_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_async_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_async_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_io.zh-tw.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-tw.html">learnyounode</a>
+      <a href="filtered_ls.zh-tw.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MY FIRST ASYNC I/O!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">4 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>撰寫一個程式，以 <strong>非同步（ asynchronous ）</strong> 的檔案操作方式讀入一個檔案，並在命令列上顯示該檔案的行數。這個程式的行為類似終端機命令 <code>cat file | wc -l</code> 。</p>
+<p>程式的第一個命令列參數將是檔案的完整路徑。</p>
+<hr>
+<h1 id="-">提示</h1>
+<p>除了現在您必須以 <strong>Node.js 的</strong> 非同步（asynchronous）方式解決這個習題以外，這個習題的解法 <em>幾乎</em> 和前一個習題相同。</p>
+<p>您要使用 <code>fs.readFile()</code> 取代 <code>fs.readFileSync()</code> 方法，相對地，還要用在第二個參數中傳入收集資料的 callback 函式，以取代原本使用回傳值的方法。</p>
+<p>請記得， Node.js 的 callback 函式一般會有以下的語法特徵：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>所以您就可以藉著檢查第一個參數是否為 True 以確認是不是有錯誤發生。如果沒有錯誤發生，您應該就會可以取得 Buffer 物件作為您的第二個參數。如果使用 <code>readFileSync()</code> 方法，您可以在第二參數中改填入「utf8」，然後把 callback 函式放在第三個參數，相對地，您會得到一個 <code>String</code> 而非 <code>Buffer</code>。</p>
+<p>要閱讀 <code>fs</code> 模組的文件，可以在瀏覽器中打開這個頁面：
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_io.zh-tw.html" class="u-inline-block all-caps">MY FIRST I/O!
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="filtered_ls.zh-tw.html" class="u-inlineBlock all-caps">FILTERED LS
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

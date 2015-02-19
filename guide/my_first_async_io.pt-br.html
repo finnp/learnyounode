@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_async_io.html" >English</a></li>
+        <li><a href="my_first_async_io.es.html" >Español</a></li>
+        <li><a href="my_first_async_io.fr.html" >Français</a></li>
+        <li><a href="my_first_async_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_async_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_async_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_async_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_async_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_io.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="filtered_ls.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MEU PRIMEIRO I/O ASSÍNCRONO!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">4 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escreva um programa que usa uma única operação assíncrona de sistema de arquivos para ler um arquivo e imprimir o número de novas linhas que ele contém no console (stdout), algo similar à executar <code>cat file | wc -l</code>.</p>
+<p>O caminho completo até o arquivo à ser lido será fornecido como primeiro argumento da linha de comando.</p>
+<hr>
+<h1 id="dicas">DICAS</h1>
+<p>A solução para este problema é <em>quase</em> a mesma do problema anterior, exceto que desta vez você vai precisar fazer da <strong>maneira Node.JS</strong>: assíncrona.</p>
+<p>Em vez de <code>fs.readFileSync()</code> você vai querer usar <code>fs.readFile()</code> e em vez de usar o valor de retorno desse método, você vai precisar coletar o valor de uma função de callback que você irá passar como sendo o segundo argumento.</p>
+<p>Lembre-se que callbacks tradicionais do Node.js normalmente têm a assinatura:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>então você pode checar se um erro ocorreu checando se o primeiro argumento é verdadeiro. Se não houver nenhum erro, você deve ter seu objeto <code>Buffer</code> como segundo argumento. Assim como <code>readFileSync()</code>, você pode fornecer &#39;utf8&#39; como segundo argumento e colocar o callback como terceiro argumento, assim você terá uma <code>String</code> ao invés de um <code>Buffer</code>.</p>
+<p>Documentação sobre o módulo <code>fs</code> pode ser encontrada apontando seu navegador para esse endereço:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_io.pt-br.html" class="u-inline-block all-caps">MEU PRIMEIRO I/O!
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="filtered_ls.pt-br.html" class="u-inlineBlock all-caps">LISTA DE ARQUIVOS FILTRADOS
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

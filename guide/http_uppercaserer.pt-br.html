@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_uppercaserer.html" >English</a></li>
+        <li><a href="http_uppercaserer.es.html" >Español</a></li>
+        <li><a href="http_uppercaserer.fr.html" >Français</a></li>
+        <li><a href="http_uppercaserer.ja.html" >日本語</a></li>
+        <li><a href="http_uppercaserer.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_uppercaserer.ru.html" >Русский</a></li>
+        <li><a href="http_uppercaserer.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_uppercaserer.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_file_server.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="http_json_api_server.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">TRANSFORMADOR UPPERCASE HTTP</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">12 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escreva um <strong>servidor</strong> HTTP que recebe apenas requisições de POST e converte os caracteres no corpo da requisição para caixa-alta e retorna-os para o cliente.</p>
+<p>Seu servidor deve &quot;escutar&quot; na porta provida a você pelo primeiro argumento para seu programa.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>Ainda que você não esteja restrito ao uso das capacidades de streaming dos objetos <code>request</code> e <code>response</code>, será muito mais fácil se você decidir usá-las.</p>
+<p>Existe um grande número de pacotes diferentes no npm que você pode usar para <em>&quot;transformar&quot;</em> um streaming de dados enquando ele está sendo passado. Para esse exercício, o pacote <code>through2-map</code> oferece a API mais simples.</p>
+<p><code>through2-map</code> permite que você crie um <em>stream transformador</em> usando apenas uma única função que recebe um bloco de dados e retorna um outro bloco de dados. Ela é designada para funcionar como um <code>Array#map()</code>, só que para streams:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> map = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2-map'</span>)
+inStream.pipe(map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chunk)</span> </span>{
+  <span class="hljs-keyword">return</span> chunk.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)
+})).pipe(outStream)
+</code></pre>
+<p>No exemplo acima, a data que estamos recebendo de <code>inStream</code> é convertida para uma String (se já não estiver nesse formato), os caracteres são revertidos e o resultado é passado para o <code>outStream</code>. Sendo assim nós fizemos um reversor de caracteres! Lembre-se que o tamanho do bloco é determinado pelo fluxo e você tem muito pouco controle sobre ele para os dados que está recebendo.</p>
+<p>Para instalar <code>through2-map</code> type:</p>
+<pre><code class="lang-sh">$ npm install through2-map
+</code></pre>
+<p>Se você não possuir uma conexão à Internet, simplesmente crie uma pasta <code>node_modules</code> e copie o diretório inteiro para o módulo que você quiser usar de dentro do diretório de instalação do {{appname}}:</p>
+<p>  <a href="../node_modules/through2-map">/node_modules/through2-map</a></p>
+<p>A documentação do through2-map foi instalada junto com o learnyounode no seu sistema e você pode lê-los apontando seu navegador para cá:</p>
+<p>  <a href="../docs/through2-map.html">/docs/through2-map.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_file_server.pt-br.html" class="u-inline-block all-caps">SERVIDOR DE ARQUIVOS HTTP
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_json_api_server.pt-br.html" class="u-inlineBlock all-caps">API DE SERVIDOR DE JSON HTTP
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

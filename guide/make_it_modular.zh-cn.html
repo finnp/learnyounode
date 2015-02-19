@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="make_it_modular.html" >English</a></li>
+        <li><a href="make_it_modular.es.html" >Español</a></li>
+        <li><a href="make_it_modular.fr.html" >Français</a></li>
+        <li><a href="make_it_modular.ja.html" >日本語</a></li>
+        <li><a href="make_it_modular.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="make_it_modular.ru.html" >Русский</a></li>
+        <li><a href="make_it_modular.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="make_it_modular.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="filtered_ls.zh-cn.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-cn.html">learnyounode</a>
+      <a href="http_client.zh-cn.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">使其模块化</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">6 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>这个问题和前面一个一样，但是这次会介绍<strong>模块</strong>的概念。你将需要创建两个文件来解决这个问题。</p>
+<p>编写一个程序来打印出所给文件目录的所含文件的列表，并且以特定的文件名后缀来过滤这个列表。这次将会提供两个参数，第一个参数是要列举的目录，第二个参数是要过滤的文件扩展名。你需要在终端中打印出过滤出来的文件列表（一个文件一行）。此外，你<strong>必须</strong>使用异步 I/O。</p>
+<p>你得编写一个<em>模块</em> 文件去做大部分的事情。这个模块必须<em>导出（export）</em>一个函数，这个函数将接收<strong>三个</strong>参数：目录名、文件扩展名、回调函数，并按此顺序传递。文件扩展名必须和传递给你的程序的扩展名字符串一模一样。也就是说，请不要把它转成正则表达式或者加上 &quot;.&quot; 前缀或者做其他的处理，而是直接传到你的模块中去，在模块中，你可以做一些处理来使你的过滤器能正常工作。</p>
+<p>这个回调函数必须以 Node 编程中惯用的约定形式（err, data）去调用。这个约定指明了，除非发生了错误，否则所传进去给回调函数的第一个参数将会是 <code>null</code>，第二个参数才会是你的数据。在本题中，这个数据将会是你过滤出来的文件列表，并且是以数组的形式。如果你接收到了一个错误，如：来自 <code>fs.readdir()</code> 的错误，则必须将这个错误作为第一个，也是唯一的参数传递给回调函数，并执行回调函数。</p>
+<p>你<strong>绝对不能</strong>直接在你的模块文件中把结果打印到终端中，你只能在你的原始程序文件中编写打印结果的代码。</p>
+<p>当你的程序接收到一些错误的时候，请简单的捕获它们，并且在终端中打印出相关的信息</p>
+<p>这里有四则规定，你的模块必须遵守：</p>
+<ol>
+<li>导出一个函数，这个函数能准确接收上述的参数。</li>
+<li>当有错误发生，或者有数据的时候，准确调用回调函数。</li>
+<li>不要改变其他的任何东西，比如全局变量或者 stdout。</li>
+<li>处理所有可能发生的错误，并把它们传递给回调函数。</li>
+</ol>
+<p>遵循一些约定的好处是，你的模块可以被任何其他也遵守这些约定的人所使用。因此，这里你新建的模块可以被其他 learnyounode 的学习者使用，或者拿去验证，都会工作得很好。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>通过创建一个仅包含目录读取和文件过滤相关的函数的文件来建立一个新的模块。要使模块<em>导出</em>（<em>export</em>）<em>单一函数</em>（<em>single function</em>），你可以将你的函数赋值给 <code>module.exports</code> 对象：</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>或者你也可以使用命名函数，然后把函数名赋值给 <code>module.exports</code>。</p>
+<p>要在你原来的程序中使用你新的模块，请用 <code>require()</code> 载入你的模块，这和载入 <code>fs</code> 模块时候用 <code>require(&#39;fs&#39;)</code> 一样，唯一的区别在于你的本地模块需要加上 &#39;./&#39; 这个相对路径前缀。所以，如果你的模块文件名字是 <code>mymodule.js</code>，那么你需要像这样写：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mymodule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./mymodule.js'</span>)
+</code></pre>
+<p>&#39;.js&#39; 这个文件扩展名通常是可以省略的。</p>
+<p>现在，<code>mymodule</code> 这个变量就指向了你的模块中  <code>module.exports</code>了，因为你刚导出了一个单一的函数，所以现在所声明的变量 <code>mymodule</code> 就是那个模块所导出的函数了，你可以直接调用它了！</p>
+<p>同样，请记住，尽早捕获你的错误，并且在回调中返回：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span> <span class="hljs-params">(callback)</span> </span>{
+  foo(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{
+    <span class="hljs-keyword">if</span> (err)
+      <span class="hljs-keyword">return</span> callback(err) <span class="hljs-comment">// 尽早返回错误</span>
+
+    <span class="hljs-comment">// ... 没有错误，处理 `data`</span>
+
+    <span class="hljs-comment">// 一切顺利，传递 null 作为 callback 的第一个参数</span>
+
+    callback(<span class="hljs-literal">null</span>, data)
+  })
+}
+</code></pre>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="filtered_ls.zh-cn.html" class="u-inline-block all-caps">LS 过滤器
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_client.zh-cn.html" class="u-inlineBlock all-caps">HTTP 客户端
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

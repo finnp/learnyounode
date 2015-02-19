@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="juggling_async.html" >English</a></li>
+        <li><a href="juggling_async.es.html" >Español</a></li>
+        <li><a href="juggling_async.fr.html" >Français</a></li>
+        <li><a href="juggling_async.ja.html" >日本語</a></li>
+        <li><a href="juggling_async.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="juggling_async.ru.html" >Русский</a></li>
+        <li><a href="juggling_async.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="juggling_async.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_collect.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="time_server.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">JONGLER AVEC L&#x27;ASYNCHRONE</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">9 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Ce problème est le même que le précédent (Collecteur HTTP), dans le sens où
+vous aurez besoin de <code>http.get()</code>.  Cependant, cette fois-ci vous allez
+recevoir <strong>trois</strong> URLs sur la ligne de commande.</p>
+<p>Vous devrez collecter le contenu complet qui vous sera envoyé pour chaque URL,
+et l’afficher sur la console (stdout).  Vous n’avez pas besoin d’afficher la
+longueur, juste les données en tant que <code>String</code>, à raison d’une ligne par URL.
+La difficulté réside dans le fait que vous <strong>devez les afficher dans le même
+ordre</strong> que celui des URLs transmises sur la ligne de commande.</p>
+<hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Ne vous attendez pas à ce que les trois serveurs soient sympa !  Ils ne vous
+enverront pas leurs réponses complètes dans l’ordre que vous espérez, donc
+vous ne pouvez pas naïvement juste afficher les contenus au fil de leur
+réception, car l’ordre ne sera pas le bon.</p>
+<p>Vous allez devoir garder les résultats sous le coude et compter les URLs
+qui ont fini leurs retours.  Une fois que vous les aurez toutes, vous
+pourrez afficher vos résultats dans la console.</p>
+<p>Compter les fonctions de rappels et une des manières basiques de gérer
+l’asynchrone en Node.  Plutôt que de le faire vous-même, vous trouverez
+sûrement utile de vous baser sur des modules tiers tels que
+<a href="http://npm.im/async">async</a> ou <a href="http://npm.im/after">after</a>. Mais pour
+cet exercice, essayez de réussir sans l’aide d’un module externe.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_collect.fr.html" class="u-inline-block all-caps">COLLECTEUR HTTP
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="time_server.fr.html" class="u-inlineBlock all-caps">SERVEUR DE TEMPS
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="filtered_ls.html" >English</a></li>
+        <li><a href="filtered_ls.es.html" >Español</a></li>
+        <li><a href="filtered_ls.fr.html" >Français</a></li>
+        <li><a href="filtered_ls.ja.html" >日本語</a></li>
+        <li><a href="filtered_ls.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="filtered_ls.ru.html" >Русский</a></li>
+        <li><a href="filtered_ls.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="filtered_ls.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_async_io.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="make_it_modular.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">LSのフィルター</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">5 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>拡張子のフィルタを使ってファイルリストをコンソールに出すアプリを書いてください。アプリの一つ目の引数はフォルダーのパスです（例えば <code>/あなた/の/フォルダー/</code>)。 拡張子は二つ目の引数です。</p>
+<p>例えば： <code>&quot;txt&quot;</code> が二つ目の引数だったら<em>後ろに <code>.txt</code> </em>がついてあるだけファイルのリストを表示しないといけません。メモ：二つ目の引数は <code>&quot;.&quot;</code> プレフィックスがありません。</p>
+<p>コンソールにそのリストを出してください。一つのファイル名は一行。 <strong>非同期</strong>I/O を使ってください。</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p><code>fs.readdir()</code> という関数の一つ目の引数はパスです。コールバックは二つ目です。コールバックはこのようになります：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, list)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>list</code> はファイル名の <code>String</code> の <code>Array</code> です。</p>
+<p><code>fs</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>Node の <code>path</code> も役に立つかもしれません。とくに <code>extname</code> の関数。</p>
+<p><code>path</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/path.html">/node_apidoc/path.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_async_io.ja.html" class="u-inline-block all-caps">初めての非同期I/O！
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="make_it_modular.ja.html" class="u-inlineBlock all-caps">モジュラーにしましょう
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

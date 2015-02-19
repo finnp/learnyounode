@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="baby_steps.html" >English</a></li>
+        <li><a href="baby_steps.es.html" >Español</a></li>
+        <li><a href="baby_steps.fr.html" >Français</a></li>
+        <li><a href="baby_steps.ja.html" >日本語</a></li>
+        <li><a href="baby_steps.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="baby_steps.ru.html" >Русский</a></li>
+        <li><a href="baby_steps.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="baby_steps.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="hello_world.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="my_first_io.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">PREMIERS PAS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">2 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Écrivez un programme qui accepte un ou plusieurs nombres comme arguments de
+la ligne de commande, et affiche la somme de ces nombres sur la console
+(stdout).</p>
+<hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Vous pouvez accéder aux arguments de la ligne de commande via l’objet global
+<code>process</code>.  L’objet <code>process</code> a une propriété <code>argv</code> qui est un tableau
+contenant la ligne de commande complète : <code>process.argv</code>.</p>
+<p>Pour vous lancer, écrivez un programme, dans un fichier que vous appelleriez
+par exemple <code>program.js</code>, qui contient simplement :</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(process.argv)
+</code></pre>
+<p>Exécutez-le en faisant <code>node program.js</code> suivi de quelques arguments, par
+exemple comme ceci :</p>
+<pre><code class="lang-sh">$ node program.js 1 2 3
+</code></pre>
+<p>Dans ce cas, l’affichage obtenu serait un tableau similaire à celui-ci :</p>
+<pre><code class="lang-js">[ <span class="hljs-string">'node'</span>, <span class="hljs-string">'/path/to/your/program.js'</span>, <span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span> ]
+</code></pre>
+<p>Vous aurez besoin de réfléchir à une façon d’itérer à travers les arguments
+numériques pour pouvoir calculer leur somme.  Le premier élément du tableau
+<code>process.argv</code> est toujours &#39;node&#39;, et le second est toujours le chemin du
+programme JS exécuté, de sorte que vous devrez démarrer à partir du troisième
+élément (index 2), et ajouter chaque élément à un total jusqu&#39;à atteindre le
+bout du tableau.</p>
+<p>Faites attention au fait que tous les éléments de <code>process.argv</code> sont des
+chaînes de caractères (<code>String</code>), et que vous aurez donc à les <em>convertir</em>
+en nombres.  Vous pouvez faire cela en les préfixant avec l’opérateur unaire
+<code>+</code> ou en les passant en argument à <code>Number()</code>, par exemple
+<code>+process.argv[2]</code> ou <code>Number(process.argv[2])</code>.</p>
+<p>learnyounode appellera votre programme avec des arguments adaptés lorsque vous
+lancerez <code>learnyounode verify program.js</code>, vous n’aurez donc pas à les passer
+vous-mêmes.  Pour tester votre programme sans vérifier son bon résultat,
+vous pouvez lancer <code>learnyounode run program.js</code>. Quand vous utilisez <code>run</code>,
+vous invoquez un environnement de test que learnyounode met en place pour
+chaque exercice.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="hello_world.fr.html" class="u-inline-block all-caps">BONJOUR, MONDE
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_io.fr.html" class="u-inlineBlock all-caps">MA PREMIÈRE E/S !
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

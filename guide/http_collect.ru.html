@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_collect.html" >English</a></li>
+        <li><a href="http_collect.es.html" >Español</a></li>
+        <li><a href="http_collect.fr.html" >Français</a></li>
+        <li><a href="http_collect.ja.html" >日本語</a></li>
+        <li><a href="http_collect.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_collect.ru.html" >Русский</a></li>
+        <li><a href="http_collect.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_collect.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_client.ru.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ru.html">learnyounode</a>
+      <a href="juggling_async.ru.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP COLLECT</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">8 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Реализуйте программу, которая посылает HTTP GET запрос на URL, который вы получите в качестве первого аргумента командной строки. Соберите <strong>все</strong> данные с сервера (не только первое событие &quot;data&quot;) и выведите две строки в консоль (stdout).</p>
+<p>Первая строка должна содержать количество символов, полученных с сервера. А вторая должна непостредственно вывести эти символы.</p>
+<hr>
+<h2 id="-">ИНФОРМАЦИЯ</h2>
+<p>Вы можете решить эту задачу двумя путями:</p>
+<p><strong>1)</strong> Собрать данные со всех событий &quot;data&quot; и последовательно добавлять их для вывода в консоль. Использовать событие &quot;end&quot; для того чтобы понять то, что поток окончен и вывести результат.</p>
+<p><strong>2)</strong> Использовать дополнительные библиотеки для того чтобы абстрагироваться от сложности сбора потоковых данных. Для этого есть две библиотеки (на самом деле их больше), которые решают эту задачу: <code>bl</code> (Buffer List) и <code>concat-stream</code>; выбор за вами.</p>
+<p>  <a href="http://npm.im/bl">http://npm.im/bl</a>
+  <a href="http://npm.im/concat-stream">http://npm.im/concat-stream</a></p>
+<p>Для того чтобы установить библиотеку воспользуйтесь пакетным менеджером для Node - <code>npm</code>. Просто наберите: </p>
+<pre><code class="lang-sh">$ npm install bl
+</code></pre>
+<p>Таким образом Вы скачаете и установите последнюю версию этой библиотеки в поддиректорию <code>node_modules</code>. Любая библиотека, установленная в эту директорию может быть доступна в вашей программе с помощью конструкции <code>require</code>, без необходимости добавления префикса &#39;./&#39;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> bl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bl'</span>)
+</code></pre>
+<p>Сперва Node будет искать библиотеку во встроенных модулях, а потом в директории <code>node_modules</code>, где она и будет находиться.</p>
+<p>Если у Вас отсутствует соединение с интернетом, просто создайте директорию <code>node_modules</code> и скопируйте туда директорию с библиотекой, которую Вы хотите использовать из learnyounode:</p>
+<p>  <a href="../node_modules/bl">/node_modules/bl</a>
+  <a href="../node_modules/concat-stream">/node_modules/concat-stream</a></p>
+<p>Обе библотеки <code>bl</code> и <code>concat-stream</code> могут принимать потоки и собирать из них данные за вас. Когда поток будет закончен, будет вызвана функция обратного вызова переданными данными.</p>
+<pre><code class="lang-js">response.pipe(bl(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+<span class="hljs-comment">// or</span>
+response.pipe(concatStream(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+</code></pre>
+<p>Примите во внимание то, что возможно Вам придеть использовать <code>data.toString()</code> для конвертации данных из Buffer.</p>
+<p>Документацию для обеих библиотек вы cможете получить, набрав в браузере: </p>
+<p>  <a href="../docs/bl.html">/docs/bl.html</a>
+  <a href="../docs/concat-stream.html">/docs/concat-stream.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_client.ru.html" class="u-inline-block all-caps">HTTP CLIENT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="juggling_async.ru.html" class="u-inlineBlock all-caps">JUGGLING ASYNC
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

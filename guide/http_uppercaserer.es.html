@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_uppercaserer.html" >English</a></li>
+        <li><a href="http_uppercaserer.es.html" >Español</a></li>
+        <li><a href="http_uppercaserer.fr.html" >Français</a></li>
+        <li><a href="http_uppercaserer.ja.html" >日本語</a></li>
+        <li><a href="http_uppercaserer.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_uppercaserer.ru.html" >Русский</a></li>
+        <li><a href="http_uppercaserer.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_uppercaserer.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_file_server.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="http_json_api_server.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP UPPERCASERER</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">12 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escribe un <strong>servidor</strong> HTTP que reciba sólo peticiones POST y convierta los caracteres del cuerpo de la petición a mayúsculas y lo devuelva al cliente.</p>
+<p>El servidor deberá escuchar en un puerto cuyo número será el primer argumento del programa.</p>
+<hr>
+<h2 id="pistas">PISTAS</h2>
+<p>Para resolver el ejercicio es conveniente usar las capacidades de streaming de los objetos <code>request</code> y <code>response</code> pero no obligatorio.</p>
+<p>Hay muchos paquetes en el registro de npm que permiten <em>&quot;transformar&quot;</em> streams. Para este ejercicio sugerimos usar <code>through2-map</code> pues su API es simple.</p>
+<p><code>through2-map</code> te permite crear un <em>transform stream</em> que recibe un chunk data y lo devuelve modificado. Funciona como <code>Array#map()</code> pero se aplica a streams:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> map = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2-map'</span>)
+inStream.pipe(map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chunk)</span> </span>{
+  <span class="hljs-keyword">return</span> chunk.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)
+})).pipe(outStream)
+</code></pre>
+<p>En el ejemplo <code>inStream</code> se convierte a String luego se inverten los the caracteres y el resultado se concatena al <code>outStream</code>. Básicamente es un inversor de caracteres. Recuerda que el tamaño del chunk se determina al principio (up-stream) y no hay mucho control del tamaño de los datos recibidos por el servidor.</p>
+<p>Para instalar <code>through2-map</code> escribe en la consola:</p>
+<pre><code class="lang-sh">$ npm install through2-map
+</code></pre>
+<p>En caso de no tener conexión a Internet, simplemente crea una carpeta <code>node_modules</code> y copia el paquete desde el directorio de instalación de learnyounode, es decir:</p>
+<p>  <a href="../node_modules/through2-map">/node_modules/through2-map</a></p>
+<p>La documentación del paquete <code>through2-map</code> puede verse en:</p>
+<p>  <a href="../docs/through2-map.html">/docs/through2-map.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_file_server.es.html" class="u-inline-block all-caps">HTTP FILE SERVER
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_json_api_server.es.html" class="u-inlineBlock all-caps">HTTP JSON API SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

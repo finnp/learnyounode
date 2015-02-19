@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="make_it_modular.html" >English</a></li>
+        <li><a href="make_it_modular.es.html" >Español</a></li>
+        <li><a href="make_it_modular.fr.html" >Français</a></li>
+        <li><a href="make_it_modular.ja.html" >日本語</a></li>
+        <li><a href="make_it_modular.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="make_it_modular.ru.html" >Русский</a></li>
+        <li><a href="make_it_modular.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="make_it_modular.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="filtered_ls.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="http_client.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">FAÇA ISSO MODULAR</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">6 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Este problema é o mesmo que o anterior, mas introduz o conceito de <strong>módulos</strong>. Você precisará criar dois arquivos para resolver este problema.</p>
+<p>Crie um programa que imprime uma lista de arquivos em um dado diretório, de modo que haja um filtro de acordo com a extensão dos arquivos. O primeiro argumento é o nome do diretório e o segundo argumento é a extensão pela qual filtrar. Imprima a lista de arquivos (um arquivo por linha) no console. Você <strong>precisa</strong>, obrigatóriamente, usar I/O assíncrono.</p>
+<p>Você deve escrever um arquivo <em>módulo</em> para fazer a maior parte do trabalho. O módulo deve <em>exportar</em> uma única função que leva <strong>três</strong> argumentos: o nome do diretório, a extensão do arquivo em uma string e uma função de callback, nessa ordem. O argumento contendo o nome da extensão do arquivo deve ser o mesmo que aquele passado para seu programa. Por exemplo: não transforme-o em uma expressão regular ou prefixe-o com &quot;.&quot; ou faça qualquer coisa que não seja passá-lo para o seu módulo onde você vai poder fazer tudo que for necessário para o filtro funcionar.</p>
+<p>A função de callback deve ser chamada usando a convenção idiomática do node (err, data). Essa convenção estipula que, a não ser se houver algum erro, o primeiro argumento passado para o callback será nulo e o segundo será seu dado. Nesse caso, o dado será sua lista filtrada de arquivos em forma de Array. Se você receber um erro da sua chamada do <code>fs.readdir()</code>, por exemplo, o callback deverá ser chamado com o erro, e somente o erro, como primeiro argumento.</p>
+<p>Você <strong>não deve</strong> imprimir diretamente no console do seu arquivo módulo, apenas do seu programa original.</p>
+<p>No caso de um erro ser lançado para seu arquivo original do programa, simplesmente cheque-o e imprima uma mensagem informativa sobre o erro no console.</p>
+<p>Estes quatro itens representam o <em>contrato</em> que seu módulo deve seguir:</p>
+<ol>
+<li>Exportar uma única função que leva os argumentos exatamente conforme descritos</li>
+<li>Chame o callback exatamente uma vez com um erro ou algum outro dado, conforme descrito</li>
+<li>Não mude mais nada, como por exemplo variávels globais ou o stdout</li>
+<li>Lide com todos os erros que possam ocorrer e passe-os para o callback</li>
+</ol>
+<p>O benefício de ter um contrato é que seu módulo poderá ser usado por qualquer um que conheça esse contrato. Sendo assim seu módulo pode ser usado por qualquer outra pessoa que faça o curso learnyounode, ou até pelo verificador, e funcionar corretamente.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>Crie um novo módulo através da criação de um novo arquivo que contém apenas suas funções de ler e filtrar o diretório. Para definir uma <em>exportação de uma única função</em> você deverá designar sua função ao objeto <code>module.exports</code>, sobreescrevendo o que já está lá:</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>Ou você pode usar uma função nominal e atribuir, então, o nome.</p>
+<p>Para usar seu novo módulo no seu arquivo original de programa, use a chamada <code>require()</code> da mesma maneira que você usou <code>require(&#39;fs&#39;)</code> para carregar o módulo <code>fs</code>. A única diferença é que no caso de serem módulos locais, eles devem ter &#39;./&#39; prefixado. Então se o nome do seu arquivo é meumodulo.js você teria algo como:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mymodule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./meumodulo.js'</span>)
+</code></pre>
+<p>O &#39;.js&#39; é opcioinal e você frequentemente vai reparar que ele foi omitido.</p>
+<p>Você agora tem o objeto <code>modulo.exports</code> no seu módulo atribuído à variável <code>meumodulo</code>. Como você está exportando uma única função, <code>meumodulo</code> é uma função que você pode chamar!</p>
+<p>Também tenha em mente que é comum checar por erros e fazer returns precoces dentro de funções callback:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span> <span class="hljs-params">(callback)</span> </span>{
+  foo(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{
+    <span class="hljs-keyword">if</span> (err)
+      <span class="hljs-keyword">return</span> callback(err) <span class="hljs-comment">// return precoce</span>
+
+    <span class="hljs-comment">// ... sem erros, continue fazendo coisas legais com `data`</span>
+
+    <span class="hljs-comment">// tudo foi bem, chame o callback com `null` para o argumento erro</span>
+
+    callback(<span class="hljs-literal">null</span>, data)
+  })
+}
+</code></pre>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="filtered_ls.pt-br.html" class="u-inline-block all-caps">LISTA DE ARQUIVOS FILTRADOS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_client.pt-br.html" class="u-inlineBlock all-caps">CLIENTE HTTP
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_uppercaserer.html" >English</a></li>
+        <li><a href="http_uppercaserer.es.html" >Español</a></li>
+        <li><a href="http_uppercaserer.fr.html" >Français</a></li>
+        <li><a href="http_uppercaserer.ja.html" >日本語</a></li>
+        <li><a href="http_uppercaserer.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_uppercaserer.ru.html" >Русский</a></li>
+        <li><a href="http_uppercaserer.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_uppercaserer.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_file_server.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="http_json_api_server.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP アッパーケース</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">12 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>POSTリクエストで渡される文字列を大文字に書き換えて返す HTTP の<strong>サーバ</strong> を書いてください。</p>
+<p>サーバは最初の引数で与えられたポートをリッスンします。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p><code>request</code> や <code>response</code> オブジェクトを使う必要はありませんが使えば楽になるでしょう。</p>
+<p>Streamのデータを途中で書き換えるためには npm に色々なパッケージがあります。この問題のためには <code>through2-map</code> と言うパッケージが一番簡単です。</p>
+<p><code>through2-map</code> が提供する関数を使うと、簡単に新しい「transform stream」が作成できます。<code>Array#map()</code> の Stream バーションと考えてよいです：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> map = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2-map'</span>)
+inStream.pipe(map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chunk)</span> </span>{
+  <span class="hljs-keyword">return</span> chunk.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>)
+})).pipe(outStream)
+</code></pre>
+<p>上記の例では <code>inStream</code> のデータを使って文字列を逆順に並び替えて <code>outStream</code> に書き出しています。
+入っているチャンクサイズがコントロールできないのを忘れないでください。</p>
+<p><code>through2-map</code> をインストールするために以下をコマンドラインに書いてください：</p>
+<pre><code class="lang-sh">$ npm install through2-map
+</code></pre>
+<p>インターネットに接続できない場合は <code>node_modules</code> に <a href="../node_modules">/node_modules</a> のフォルダのパッケージをコピーしてください。</p>
+<p>  <a href="../node_modules/through2-map">/node_modules/through2-map</a></p>
+<p><code>through2-map</code> モジュールのドキュメントは learnyounode と一緒にインストールされているのでブラウザーでこのリンクを見てください:
+  <a href="../docs/through2-map.html">/docs/through2-map.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_file_server.ja.html" class="u-inline-block all-caps">HTTP ファイルサーバ
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_json_api_server.ja.html" class="u-inlineBlock all-caps">HTTP JSON API サーバ
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

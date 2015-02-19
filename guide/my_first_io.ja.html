@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="my_first_async_io.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">初めてのI/O！</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p><strong>同期</strong> ファイルシステムの関数を使ってファイルの改行数を出すアプリを書いてください。<code>cat file | wc -l</code>と同じようなアプリです。</p>
+<p>アプリの一つ目のコマンドライン引数はそのファイルのパスです。テスト用のファイルを作る必要はありません。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>ファイルシステムにアクセスするためにはNodeのコアライブラリーの <code>fs</code>モジュールが必要となります。モジュールをロードするには以下のようにします:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>その後は <code>fs</code> という変数で <code>fs</code> というモジュールを利用出来ます。</p>
+<p>同期(ブロッキング)ファイルシステム関数の名前には後ろに全て <code>Sync</code> がついています。  ファイルを読むためには <code>fs.readFileSync(&#39;/あなた/の/ファイル&#39;)</code> を使ってください. この関数は <code>Buffer</code> オブジェクトを返します。その<code>Buffer</code> を使って全てのファイルコンテンツにアクセスできます。</p>
+<p><code>fs</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p><code>Buffer</code> オブジェクトは、ASCIIやバイナリ、その他のフォーマットを扱う際の Nodeの効率的な方法です。エンコーディングは関係ありません。<code>Buffer</code> のオブジェクトは <code>toString()</code> をつかってStringに変換できます。 例えば <code>var str = buf.toString()</code>.</p>
+<p><code>Buffer</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>改行を数える簡単な方法が探しているのなら、このヒントは役に立つでしょう：<br>JavaScriptの <code>String</code> は <code>.split()</code> 関数を使って 文字列 を分割出来ます。<code>\n</code> を区切り文字として使えば全てのラインが入った Array を受け取ることが出来ます。ただし、ファイルの最後の改行には気をつけてください。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.ja.html" class="u-inline-block all-caps">ベイビーステップ
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.ja.html" class="u-inlineBlock all-caps">初めての非同期I/O！
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

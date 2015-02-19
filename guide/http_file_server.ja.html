@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_file_server.html" >English</a></li>
+        <li><a href="http_file_server.es.html" >Español</a></li>
+        <li><a href="http_file_server.fr.html" >Français</a></li>
+        <li><a href="http_file_server.ja.html" >日本語</a></li>
+        <li><a href="http_file_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_file_server.ru.html" >Русский</a></li>
+        <li><a href="http_file_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_file_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="time_server.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="http_uppercaserer.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP ファイルサーバ</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">11 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>常に同じテキストファイルを返す、HTTP の<strong>サーバ</strong>を書いてください。</p>
+<p>サーバは最初の引数で供給されているポートをリッスンするサーバです。</p>
+<p>二つ目の引数は、返すテキストファイルのパスです。ファイルを返すためは <code>fs.createReadStream()</code> を使わないといけません。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>今回は HTTP 専用サーバになりますので一般的な TCP サーバより Node.js の <code>http</code> コアモジュールを使った方がよいです。 <code>net</code> モジュールと同じく <code>http.createServer()</code> 関数があります。たたそのサーバが受信するのは <code>HTTP</code> リクエストです。</p>
+<p><code>http.createServer()</code> の第一引数であるリスナー関数は毎コネクション時に呼ばれます。</p>
+<p>一般的なHTTPリクエストリスナー関数の例：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listener</span> <span class="hljs-params">(request, response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>上記の例の二つの引数は <code>HTTP</code> のリスナーにおける代表的なものです。第一引数の <code>request</code> には HTTP のプロパティが入ります。例えば：ヘッダーやクエリ文字列。第二引数の <code>response</code> はクライアントにヘッダーやボディを返す為のオブジェクトです。</p>
+<p><code>request</code> や <code>response</code> は Node.js における <strong>Stream</strong> です！<strong>Stream</strong> なので、他の <strong>Stream</strong> 由来のシステムとの送受信にうってつけです。</p>
+<p><code>http.createServer()</code> はあなたのサーバのオブジェクトを返します。ポートをリッスンするためにサーバオブジェクトの <code>server.listen(portNumber)</code> を呼んでください。</p>
+<p>一般的な Node.js の HTTP サーバはこのように記述されています：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(req, res)</span> </span>{
+  <span class="hljs-comment">// request handling logic...</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p><code>http</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p><code>fs</code> と言う Node.js のコアモジュールにはファイルを stream できる API があります。コマンドラインの第二引数（テキストファイルへのパス）を <code>fs.createReadStream()</code> に渡すとそのファイルを表す Stream オブジェクトがもらえます。その Stream は <code>src.pipe(dst)</code> を使って <code>src</code> の Stream を <code>dst</code> の Stream に繋げることができます。このようにファイルのデータ Stream は HTTP のレスポンス Stream に繋げられます。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="time_server.ja.html" class="u-inline-block all-caps">タイムサーバ
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_uppercaserer.ja.html" class="u-inlineBlock all-caps">HTTP アッパーケース
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

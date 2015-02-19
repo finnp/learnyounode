@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="my_first_async_io.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MA PREMIÈRE E/S !</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Écrivez un programme qui utilise une opération <strong>synchrone</strong> sur le système
+de fichiers pour lire un fichier et afficher son nombre de fins de ligne sur
+la console (stdout), un peu comme si vous faisiez <code>cat file | wc -l</code>.</p>
+<p>Le chemin complet du fichier à lire vous sera fourni comme premier argument
+de la ligne de commande.  Il est inutile de faire votre propre fichier de test.</p>
+<hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Tout ce qui touche au système de fichiers se trouve dans le module noyau <code>fs</code>
+(un module noyau est fourni de base par Node).  Pour charger ce type de
+module, il vous suffit d’un appel comme le suivant :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>À présent vous avez le module <code>fs</code> entier mis à disposition dans votre
+variable nommée <code>fs</code>.</p>
+<p>Toutes les opérations synchrones (bloquantes) du système de fichier dans le
+module <code>fs</code> ont un nom qui se termine par &#39;Sync&#39;.  Pour lire un fichier, vous
+aurez donc besoin de <code>fs.readFileSync(&#39;/chemin/du/fichier&#39;)</code>.  Cette méthode
+vous <em>renverra</em> un objet <code>Buffer</code> avec l’intégralité du contenu du fichier.</p>
+<p>La documentation du module <code>fs</code> est disponible ici, vous n’avez qu’à l’ouvrir
+dans votre navigateur :</p>
+<p>  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>Les objets <code>Buffer</code> sont l’approche retenue par Node pour représenter
+efficacement des tableaux de données, qu’il s’agisse de texte ASCII, de
+binaire ou d’autres formats.  Les objets <code>Buffer</code> peuvent être convertis
+en chaînes de caractères par un simple appel à leur méthode <code>toString()</code>,
+par exemple <code>var str = buf.toString()</code>.</p>
+<p>La documentation des <code>Buffer</code>s est disponible en ouvrant le fichier
+suivant dans votre navigateur :</p>
+<p>  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>Si vous cherchez un moyen simple de compter les sauts de lignes dans une
+chaîne de caractères, souvenez-vous qu’une <code>String</code> JavaScript peut être
+découpée avec <code>.split()</code> en un tableau de sous-chaînes, et que &#39;\n&#39; peut
+y être renseigné comme délimiteur.  À ce propos, le fichier de test n’aura
+pas de &#39;\n&#39; à la fin, donc il contiendra un élément de plus que le nombre
+de fins de ligne.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.fr.html" class="u-inline-block all-caps">PREMIERS PAS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.fr.html" class="u-inlineBlock all-caps">MA PREMIÈRE E/S ASYNCHRONE !
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

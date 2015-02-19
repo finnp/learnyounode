@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="make_it_modular.html" >English</a></li>
+        <li><a href="make_it_modular.es.html" >Español</a></li>
+        <li><a href="make_it_modular.fr.html" >Français</a></li>
+        <li><a href="make_it_modular.ja.html" >日本語</a></li>
+        <li><a href="make_it_modular.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="make_it_modular.ru.html" >Русский</a></li>
+        <li><a href="make_it_modular.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="make_it_modular.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="filtered_ls.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="http_client.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">モジュラーにしましょう</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">6 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>今回の問題は前回のとよく似ていますが、今回は <strong>modules</strong> の概念を使いましょう。問題の解決には2つのファイルが必要になります。</p>
+<p>与えられたディレクトリーからファイルの拡張子でフィルタリングされたファイルのリストを出力するプログラムを書いてください。ーつ目の引数はディレクトリー名、二つ目は拡張子です。１行に１ファイルずつコンソールに出力してください。非同期 I/O を使ってください。</p>
+<p><strong>module</strong> ファイルに処理の大部分を書いてください。<strong>module</strong> は、3つの引数を取る関数を一つだけ定義してください。引数は ディレクトリー名、ファイル拡張子、それからコールバック関数、という順序です。ファイル拡張子の引数はそのままプログラム本体に渡してください。つまり、正規表現に変換したり <code>&quot;.&quot;</code> を付けたりしてはいけません。</p>
+<p>コールバック関数は Node の習慣的なイディオムを使って呼び出してください： <code>(err, data)</code> 。このイディオムで言うとエラーのない場合はーつ目の引数 （err）は null です。2つ目にはデータが入っています。今回の問題の場合にはファイルリストの Array です。
+エラーの場合（つまり： <code>fs.readdir()</code> で問題があった場合）は、そのエラーだけを一つ目の引数としてコールバック関数に渡してください。</p>
+<p>コンソールへの出力は <strong>module</strong> ではなく、本体のプログラムでのみ出力してください。</p>
+<p>エラーの場合はわかりやすいエラーメッセージを出力してください。</p>
+<p>まとめ：つまり、あなたの <strong>module</strong> は、以下の４点の制約を守ってください。</p>
+<ol>
+<li>正しく引数を取る関数を定義してください。</li>
+<li>エラーか何らかのデータを引数に取るコールバックを1度だけ呼び出してください。</li>
+<li>他には何も変えないでください（グローバル変数や標準出力）</li>
+<li>発生する可能性のあるエラーは全てコールバック関数に渡してください。</li>
+</ol>
+<p>この制約の良いところはこれを守っている <strong>module</strong> であれば誰にでも扱えることです。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>フォルダーの内容を読み、フィルタする Module を書くためにそれを新しいファイルに書いてください。<strong>一つの関数だけ</strong> を定義するためには、以下の例のように <code>module.exports</code> を利用します。：</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>あるいは名前がある関数を名前を使って定義してもいいです。</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hoge</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">/* ... */</span>
+}
+
+<span class="hljs-built_in">module</span>.exports = hoge
+</code></pre>
+<p>あなたの新い Module を使うために <code>require()</code> を使ってください。 <code>require(&#39;fs&#39;)</code> が <code>fs</code> をロードすると同じように。ただ、一つの大切な違いはローカルの Module のために <code>&#39;./&#39;</code> を使ってください。あなたの Module の名前は <code>mymodule.js</code> だったらこのように使ってください:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> hoge_module = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./mymodule.js'</span>)
+</code></pre>
+<p>（メモ： <code>&#39;.js&#39;</code> の拡張子はこの場合必ずしも必要ではありません。他のコードではそれはよく省略しています。）</p>
+<p>上記コードによって Module に書いてある <code>module.exports</code> の Object にアクセスできます。それは <code>hoge_module</code> 変数に格納されます。<code>mymodule.js</code> には一つの関数だけが定義されているので、 <code>hoge_module</code> 変数そのものが実行可能な関数です！</p>
+<p><strong>例</strong>： <code>hoge_module();</code></p>
+<p>イディオムのエラーチェックと <code>return</code> を忘れないでください：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span> <span class="hljs-params">(callback)</span> </span>{
+  foo(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{
+    <span class="hljs-keyword">if</span> (err)
+      <span class="hljs-keyword">return</span> callback(err) <span class="hljs-comment">// 早めの `return` が大事。</span>
+
+    <span class="hljs-comment">// ... エラーのない場合、そのまま `data`を使って楽しんでください。</span>
+
+    <span class="hljs-comment">// 十分楽しく過ごしてからはエラーの引数を `null` にしてください。</span>
+    callback(<span class="hljs-literal">null</span>, data)
+  })
+}
+</code></pre>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="filtered_ls.ja.html" class="u-inline-block all-caps">LSのフィルター
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_client.ja.html" class="u-inlineBlock all-caps">HTTP クライアント
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

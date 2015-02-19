@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_client.html" >English</a></li>
+        <li><a href="http_client.es.html" >Español</a></li>
+        <li><a href="http_client.fr.html" >Français</a></li>
+        <li><a href="http_client.ja.html" >日本語</a></li>
+        <li><a href="http_client.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_client.ru.html" >Русский</a></li>
+        <li><a href="http_client.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_client.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="make_it_modular.zh-cn.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-cn.html">learnyounode</a>
+      <a href="http_collect.zh-cn.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP 客户端</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">7 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>编写一个程序来发起一个 HTTP GET 请求，所请求的 URL 为命令行参数的第一个。然后将<strong>每一个</strong> &quot;data&quot; 事件所得的数据，以字符串形式在终端（标准输出 stdout）的新的一行打印出来。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>完成这个练习，你需要使用 Node.js 核心模块之一：<code>http</code>。</p>
+<p>你可以使用浏览器访问 <a href="../node_apidoc/http.html">/node_apidoc/http.html</a> 来获取关于 <code>http</code> 模块的文档。</p>
+<p><code>http.get()</code> 方法是用来发起简单的 GET 请求的快捷方式，使用这个方法可以一定程度简化你的程序。<code>http.get()</code> 的第一个参数是你想要 GET 的 URL，第二个参数则是回调函数。</p>
+<p>与其他的回调函数不同，这个回调函数有如下这些特征：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>response</code> 对象是一个 Node 的 <strong>Stream</strong> 类型的对象，你可以将 Node Stream 当做一个会触发一些事件的对象，其中我们通常所需要关心的事件有三个： &quot;data&quot;，&quot;error&quot; 以及 &quot;end&quot;。你可以像这样来监听一个事件：</p>
+<pre><code class="lang-js">response.on(<span class="hljs-string">"data"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> })
+</code></pre>
+<p>&#39;data&#39; 事件会在每个数据块到达并已经可以对其进行一些处理的时候被触发。数据块的大小将取决于数据源。</p>
+<p>你从 <code>http.get()</code> 所获得的 <code>response</code> 对象/Stream 还有一个 <code>setEncoding()</code> 的方法。如果你调用这个方法，并为其指定参数为 <code>utf8</code>，那么 <code>data</code> 事件中会传递字符串，而不是标准的 Node <code>Buffer</code> 对象，这样，你也不用再手动将 <code>Buffer</code> 对象转换成字符串了。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="make_it_modular.zh-cn.html" class="u-inline-block all-caps">使其模块化
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_collect.zh-cn.html" class="u-inlineBlock all-caps">HTTP 收集器
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

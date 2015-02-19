@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="my_first_async_io.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MY FIRST I/O!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Write a program that uses a single <strong>synchronous</strong> filesystem operation to read a file and print the number of newlines it contains to the console (stdout), similar to running <code>cat file | wc -l</code>.</p>
+<p>The full path to the file to read will be provided as the first command-line argument. You do not need to make your own test file. </p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>To perform a filesystem operation you are going to need the <code>fs</code> module from the Node core library. To load this kind of module, or any other &quot;global&quot; module, use the following incantation:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>Now you have the full <code>fs</code> module available in a variable named <code>fs</code>.</p>
+<p>All synchronous (or blocking) filesystem methods in the <code>fs</code> module end with &#39;Sync&#39;. To read a file, you&#39;ll need to use <code>fs.readFileSync(&#39;/path/to/file&#39;)</code>. This method will <em>return</em> a <code>Buffer</code> object containing the complete contents of the file.</p>
+<p>Documentation on the <code>fs</code> module can be found by pointing your browser here:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p><code>Buffer</code> objects are Node&#39;s way of efficiently representing arbitrary arrays of data, whether it be ascii, binary or some other format. <code>Buffer</code> objects can be converted to strings by simply calling the <code>toString()</code> method on them. e.g. <code>var str = buf.toString()</code>.</p>
+<p>Documentation on <code>Buffer</code>s can be found by pointing your browser here:
+  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>If you&#39;re looking for an easy way to count the number of newlines in a string, recall that a JavaScript <code>String</code> can be <code>.split()</code> into an array of substrings and that &#39;\n&#39; can be used as a delimiter. Note that the test file does not have a newline character (&#39;\n&#39;) at the end of the last line, so using this method you&#39;ll end up with an array that has one more element than the number of newlines.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.html" class="u-inline-block all-caps">BABY STEPS
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.html" class="u-inlineBlock all-caps">MY FIRST ASYNC I/O!
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

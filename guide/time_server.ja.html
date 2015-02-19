@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="time_server.html" >English</a></li>
+        <li><a href="time_server.es.html" >Español</a></li>
+        <li><a href="time_server.fr.html" >Français</a></li>
+        <li><a href="time_server.ja.html" >日本語</a></li>
+        <li><a href="time_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="time_server.ru.html" >Русский</a></li>
+        <li><a href="time_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="time_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="juggling_async.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="http_file_server.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">タイムサーバ</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">10 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p><strong>TCPのタイムサーバ</strong>を書いてください！</p>
+<p>サーバは最初の引数で供給されているポートをリッスンするサーバです。それぞれのコネクションに今の日付と時間24時間表記）を返してください。</p>
+<pre><code><span class="hljs-string">"YYYY-MM-DD hh:mm"</span>
+</code></pre><p>その後は改行です。月、日、時間や分は２桁にゼロパディング(※)してください。例：</p>
+<pre><code><span class="hljs-string">"2013-07-06 17:42"</span>
+</code></pre><p>※ ゼロパディング：足りない桁を0で埋める事。例えば <code>1</code> を2桁にする場合は <code>01</code> となります。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>この例題のために生の TCP サーバを書いてください。 HTTP 専用の TCP は使っていないので Node.js の <code>net</code> モジュールが必要になります。 <code>net</code> モジュールには全ての基本的なネットワーキング機能が含まれます。</p>
+<p><code>net</code> にはイベントハンドラのような関数を引数に取る <code>net.createServer()</code> という関数があります。引数が関数のみでイベント名が無いのでコールバックのようですが、コールバックと違って何回も呼ばれます。それぞれの接続が確立するごとに引数に定義した関数が呼ばれます。</p>
+<p>一般的なイベントハンドラ用関数の例：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span> <span class="hljs-params">(eventData)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p><code>net.createServer()</code> もサーバのオブジェクトを返しています。特定のポートをリッスンするためは <code>server.listen(portNumber)</code> を呼んでください。</p>
+<p>一般的な Node.js の TCP サーバはこのように記述されています：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">'net'</span>)
+<span class="hljs-keyword">var</span> server = net.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(socket)</span> </span>{
+  <span class="hljs-comment">// socket handling logic</span>
+})
+server.listen(<span class="hljs-number">8000</span>)
+</code></pre>
+<p>ポート番号としてコマンドラインの一つ目の引数を使いましょう。忘れないでください！</p>
+<p><code>socket</code> と言うオブジェクトに色々な meta のデータが含まれます。ただ、その <code>socket</code> は読み書きもできます。 読み書きStream は<code>duplex Stream</code> と言われています。今回の問題はデータを送信して接続を閉じるだけです。</p>
+<p><code>socket.write(data)</code> を使ってデータが送り出せます。<code>socket.end()</code> はその Socket (接続)を閉じます。<code>.end()</code> は任意で引数を一つ取ることができます。その引数は <code>.write</code> と同じく data ですので、<code>socket.end(data)</code> などとするとコードが簡単なると思います。 </p>
+<p><code>net</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:</p>
+<p>  <a href="../node_apidoc/net.html">/node_apidoc/net.html</a></p>
+<p>問題に書いてあった通り <code>new Date()</code> の日付を整形する必要があります。<code>date</code> には色々な役に立つ関数があります：</p>
+<pre><code class="lang-js">date.getFullYear()
+date.getMonth()     <span class="hljs-comment">// 0からスタートしています</span>
+date.getDate()      <span class="hljs-comment">// 月の日</span>
+date.getHours()
+date.getMinutes()
+</code></pre>
+<p>また、 <code>strftime</code> というnpmパッケージには、 Unix の <code>date</code> 関数と同じフォーマットで日付を整形可能な機能 <code>strftime(fmt, date)</code> があります。 `strftime&#39; のドキュメントは次のURLを参照してください。：<a href="https://github.com/samsonjs/strftime">https://github.com/samsonjs/strftime</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="juggling_async.ja.html" class="u-inline-block all-caps">ASYNCジャグリング
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_file_server.ja.html" class="u-inlineBlock all-caps">HTTP ファイルサーバ
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

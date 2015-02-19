@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="juggling_async.html" >English</a></li>
+        <li><a href="juggling_async.es.html" >Español</a></li>
+        <li><a href="juggling_async.fr.html" >Français</a></li>
+        <li><a href="juggling_async.ja.html" >日本語</a></li>
+        <li><a href="juggling_async.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="juggling_async.ru.html" >Русский</a></li>
+        <li><a href="juggling_async.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="juggling_async.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_collect.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="time_server.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">JUGGLING ASYNC</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">9 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Este ejercicio es similar al anterior puesto que debes usar <code>http.get()</code>. Sin embargo, esta vez tu programa recibirá <strong>tres</strong> URLs como argumentos.</p>
+<p>Tu programa deberá imprimir el contenido de cada una de las URLs en consola en el mismo orden que fueron recibidos los argumentos. No deberás imprimir el largo, solo el contenido como String, pero <strong>debes respetar el orden</strong> de llegada de los argumentos.</p>
+<hr>
+<h2 id="pistas">PISTAS</h2>
+<p>Como las llamadas a las URLs son asíncronas, es probable que no recibas las respuestas en orden por lo que no puedes imprimir las respuestas a medida que llegan.</p>
+<p>Tendrás que encolar los resultados y mantener un contador de cuántas peticiones han sido recibidas de modo que al llegar al final puedas imprimir los resultados.</p>
+<p>En la vida real, hay varias librerías como <a href="http://npm.im/async">async</a> y <a href="http://npm.im/after">after</a> que facilitan la continuación de los callbacks. Para el alcance de este ejercicio no es necesario usar librerías externas.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_collect.es.html" class="u-inline-block all-caps">HTTP COLLECT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="time_server.es.html" class="u-inlineBlock all-caps">TIME SERVER
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

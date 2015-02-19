@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_json_api_server.html" >English</a></li>
+        <li><a href="http_json_api_server.es.html" >Español</a></li>
+        <li><a href="http_json_api_server.fr.html" >Français</a></li>
+        <li><a href="http_json_api_server.ja.html" >日本語</a></li>
+        <li><a href="http_json_api_server.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_json_api_server.ru.html" >Русский</a></li>
+        <li><a href="http_json_api_server.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_json_api_server.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_uppercaserer.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="index.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP JSON API サーバ</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">13 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>&#39;/api/parsetime&#39; への GET リクエストの時に JSON のデータを返す HTTP <strong>サーバ</strong> を書いてください。リクエストのクエリには &#39;iso&#39; と言う ISO 形式のタイムスタンプパラメーターが渡されるものとします。</p>
+<p>すなわち：</p>
+<p>  /api/parsetime?iso=2013-08-10T12:10:15.474Z</p>
+<p>レスポンスはそのタイムスタンプの時間、分、秒のデータである &#39;hour&#39;, &#39;minute&#39; と &#39;second&#39; の JSON プロパティです:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"hour"</span>: <span class="hljs-number">14</span>,
+  <span class="hljs-string">"minute"</span>: <span class="hljs-number">23</span>,
+  <span class="hljs-string">"second"</span>: <span class="hljs-number">15</span>
+}
+</code></pre>
+<p>また、&#39;/api/unixtime&#39; への GET リクエストも作ってください。そこでも同じクエリパラメーターを使って UNIX の epoch time (※) を JSON の &#39;unixtime&#39; というプロパティに格納して返してください：</p>
+<pre><code class="lang-json">{ <span class="hljs-string">"unixtime"</span>: <span class="hljs-number">1376136615474</span> }
+</code></pre>
+<p>※ UNIX の epoch time ： 1970/01/01 00:00:00.000 からカウントされた時間（ミリ秒単位）</p>
+<p>サーバは最初の引数で与えられたポートをリッスンします。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>リクエストごとに正しいエンドポイントを選択するために <code>request</code> オブジェクトの <code>url</code> プロパティを使ってください。</p>
+<p>クエリを URL からをパースするためには Node.js のコアモジュール <code>url</code> が役に立ちます。<code>url.parse(request.url, true)</code> は <code>request.url</code> のコンテンツを解釈して有用なオブジェクトを返します。</p>
+<p>例としてコマンドラインで以下を実行してみてください：</p>
+<pre><code class="lang-sh">$ node -pe <span class="hljs-string">"require('url').parse('/test?q=1', true)"</span>
+</code></pre>
+<p><code>url</code> モジュールのドキュメントはブラウザーでこのリンクを見てください:
+  <a href="../node_apidoc/url.html">/node_apidoc/url.html</a></p>
+<p>サーバからのレスポンスは JSON 文字列の形式にしてください。<code>JSON.stringify()</code> について調べたほうがよいです。</p>
+<p>良いインターネットの住民であるために Content-Type ヘッダーをつけてください：</p>
+<pre><code class="lang-js">res.writeHead(<span class="hljs-number">200</span>, { <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span> })
+</code></pre>
+<p>JavaScript の <code>Date</code> オブジェクトは ISO 形式で出力できます。例えば：<code>new Date().toISOString()</code> を使って。
+逆に、<code>Date</code> のオブジェクトを作るときには ISO の時間形式も解釈できます。例えば： <code>new Date(isoString)</code> 。 <code>Date#getTime()</code> も役に立つと思います。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_uppercaserer.ja.html" class="u-inline-block all-caps">HTTP アッパーケース
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="index.ja.html" class="u-inlineBlock all-caps">
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

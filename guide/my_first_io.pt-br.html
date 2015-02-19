@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="my_first_async_io.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">MEU PRIMEIRO I/O!</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escreva um programa que usa uma única operação síncrona de sistema de arquivos (filesystem) para ler e imprimir o número de novas linhas que ele contém no console (stdout), algo similar à executar <code>cat file | wc -l</code>.</p>
+<p>Todo o caminho até o arquivo à ser lido será fornecido como primeiro argumento da linha de comando.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>Para realizar uma operação de sistema de arquivos (filesystem), você vai precisar do módulo <code>fs</code> da library principal do Node. Para carregar esse tipo de módulo ou qualquer outro módulo &quot;global&quot;, use o seguinte código:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>Agora você tem o módulo <code>fs</code> completo disponível em uma variável chamada <code>fs</code>.</p>
+<p>Todas os métodos de sistema de arquivos síncronas (ou bloqueantes) no módulo <code>fs</code> terminam com &#39;Sync&#39;. Para ler um arquivo, você vai precisar usar <code>fs.readFileSync(&#39;caminho/do/arquivo&#39;)</code>. Esse método irá retornar um objeto <code>Buffer</code> contendo o conteúdo completo do arquivo.</p>
+<p>A documentação do módulo <code>fs</code> pode ser encontrada apontando seu navegador para esse endereço:
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p>Objetos <code>Buffer</code> são a maneira do Node de representar eficientemente arrays arbitrários de dados, sejam eles ascii, binários ou quaisquer outros formatos. Objetos <code>Buffer</code> podem ser convertidos em strings invocando o método <code>toString()</code> neles. Por exemplo: <code>var str = buf.toString()</code>.</p>
+<p>A documentação sobre <code>Buffer</code>s pode ser encontrada apontando seu navegador para esse endereço:
+  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>Se você estiver procurando por uma maneira fácil de contar o número de novas linhas em uma string, lembre-se que uma <code>String</code> JavaScript pode ser dividida usando <code>.split()</code> em um array de substrings e que &#39;<code>\n</code>&#39; pode ser usado como um delimitador. Note que o arquivo de teste não possui um caractere de nova linha (&#39;<code>\n</code>&#39;) no fim da última linha, então ao usar esse método você vai acabar tendo um array com um elemento a mais do que o número de novas linhas.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.pt-br.html" class="u-inline-block all-caps">PASSOS DE BEBÊ
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.pt-br.html" class="u-inlineBlock all-caps">MEU PRIMEIRO I/O ASSÍNCRONO!
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

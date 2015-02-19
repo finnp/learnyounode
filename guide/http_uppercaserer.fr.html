@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_uppercaserer.html" >English</a></li>
+        <li><a href="http_uppercaserer.es.html" >Español</a></li>
+        <li><a href="http_uppercaserer.fr.html" >Français</a></li>
+        <li><a href="http_uppercaserer.ja.html" >日本語</a></li>
+        <li><a href="http_uppercaserer.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_uppercaserer.ru.html" >Русский</a></li>
+        <li><a href="http_uppercaserer.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_uppercaserer.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_file_server.fr.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.fr.html">learnyounode</a>
+      <a href="http_json_api_server.fr.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">CONVERTISSEUR EN MAJUSCULES HTTP</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">12 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Écrivez un <strong>serveur</strong> HTTP qui reçoit uniquement des requêtes POST et
+convertit le texte du corps de requête entrante en majuscules pour ensuite
+le renvoyer au client.</p>
+<p>Votre serveur écoutera sur un port dont le numéro vous sera fourni en premier
+argument de la ligne de commande.</p>
+<hr>
+<h2 id="conseils">CONSEILS</h2>
+<p>Même s’il n’est pas impératif que vous vous cantonniez aux capacités orientées
+flux des objets <code>request</code> et <code>response</code>, la solution sera nettement plus
+facile si vous vous en servez.</p>
+<p>On trouve bon nombre de modules tiers sur npm qui fournissent un mécanisme de
+<em>« transformation »</em> des données d’un flux au fil de l’eau.  Pour cet exercice,
+le module <code>through2-map</code> est probablement le plus simple d’emploi.</p>
+<p><code>through2-map</code> vous permet de créer un <em>flux de transformation</em> simplement à
+l’aide d’une fonction qui prend un bloc de données et en renvoie un autre.
+Il est conçu pour fonctionner de façon très similaire à <code>Array#map()</code>, mais
+pour les flux :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> map = <span class="hljs-built_in">require</span>(<span class="hljs-string">'through2-map'</span>);
+inStream.pipe(map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(chunk)</span> </span>{
+  <span class="hljs-keyword">return</span> chunk.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>);
+})).pipe(outStream);
+</code></pre>
+<p>Dans l’exemple ci-dessus, les données entrantes issues de <code>inStream</code> sont
+converties en <code>String</code> (si elles n’en sont pas déjà), leurs caractères sont
+inversés et le résultat est transmis à <code>outStream</code>.  Nous avons donc écrit
+un inverseur de blocs de caractères !  Souvenez-vous toutefois que la taille
+du bloc est déterminée en amont et que vous n’avez guère de contrôle sur les
+données entrantes.</p>
+<p>Pour installer <code>through2-map</code>, tapez :</p>
+<pre><code class="lang-sh">$ npm install through2-map
+</code></pre>
+<p>Si vous n’avez pas de connexion Internet, créez simplement un dossier
+<code>node_modules</code> et copiez-y tel quel le répertoire du module que vous
+souhaitez utiliser depuis le dossier d’installation de learnyounode :</p>
+<p>  <a href="../node_modules/through2-map">/node_modules/through2-map</a></p>
+<p>La documentation pour <code>through2-map</code> a été installée avec le reste
+de learnyounode sur votre système pour que vous puissiez la consulter
+avec votre navigateur à l’adresse suivante :</p>
+<p>  <a href="../docs/through2-map.html">/docs/through2-map.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_file_server.fr.html" class="u-inline-block all-caps">SERVEUR DE FICHIERS HTTP
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_json_api_server.fr.html" class="u-inlineBlock all-caps">SERVEUR D&#x27;API JSON EN HTTP
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

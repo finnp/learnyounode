@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_collect.html" >English</a></li>
+        <li><a href="http_collect.es.html" >Español</a></li>
+        <li><a href="http_collect.fr.html" >Français</a></li>
+        <li><a href="http_collect.ja.html" >日本語</a></li>
+        <li><a href="http_collect.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_collect.ru.html" >Русский</a></li>
+        <li><a href="http_collect.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_collect.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_client.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.html">learnyounode</a>
+      <a href="juggling_async.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP COLLECT</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">8 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Write a program that performs an HTTP GET request to a URL provided to you as the first command-line argument. Collect <strong>all</strong> data from the server (not just the first &quot;data&quot; event) and then write two lines to the console (stdout).</p>
+<p>The first line you write should just be an integer representing the number of characters received from the server. The second line should contain the complete String of characters sent by the server.</p>
+<hr>
+<h2 id="hints">HINTS</h2>
+<p>There are two approaches you can take to this problem: </p>
+<p><strong>1)</strong> Collect data across multiple &quot;data&quot; events and append the results together prior to printing the output. Use the &quot;end&quot; event to determine when the stream is finished and you can write the output.</p>
+<p><strong>2)</strong> Use a third-party package to abstract the difficulties involved in collecting an entire stream of data. Two different packages provide a useful API for solving this problem (there are likely more!): <code>bl</code> (Buffer List) and <code>concat-stream</code>; take your pick!</p>
+<p>  <a href="http://npm.im/bl">http://npm.im/bl</a>
+  <a href="http://npm.im/concat-stream">http://npm.im/concat-stream</a></p>
+<p>To install a Node package, use the Node Package Manager <code>npm</code>. Simply type:</p>
+<pre><code class="lang-sh">$ npm install bl
+</code></pre>
+<p>And it will download and install the latest version of the package into a subdirectory named <code>node_modules</code>. Any package in this subdirectory under your main program file can be loaded with the <code>require</code> syntax without being prefixed by &#39;./&#39;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> bl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bl'</span>)
+</code></pre>
+<p>Node will first look in the core modules and then in the <code>node_modules</code> directory where the package is located.</p>
+<p>If you don&#39;t have an Internet connection, simply make a <code>node_modules</code> directory and copy the entire directory for the package you want to use from inside the learnyounode installation directory:</p>
+<p>  <a href="../node_modules/bl">/node_modules/bl</a>
+  <a href="../node_modules/concat-stream">/node_modules/concat-stream</a></p>
+<p>Both <code>bl</code> and <code>concat-stream</code> can have a stream <em>piped</em> in to them and they will collect the data for you. Once the stream has ended, a callback will be fired with the data:</p>
+<pre><code class="lang-js">response.pipe(bl(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+<span class="hljs-comment">// or</span>
+response.pipe(concatStream(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+</code></pre>
+<p>Note that you will probably need to <code>data.toString()</code> to convert from a Buffer.</p>
+<p>Documentation for both of these modules has been installed along with learnyounode on your system and you can read them by pointing your browser here:</p>
+<p>  <a href="../docs/bl.html">/docs/bl.html</a>
+  <a href="../docs/concat-stream.html">/docs/concat-stream.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_client.html" class="u-inline-block all-caps">HTTP CLIENT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="juggling_async.html" class="u-inlineBlock all-caps">JUGGLING ASYNC
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_client.html" >English</a></li>
+        <li><a href="http_client.es.html" >Español</a></li>
+        <li><a href="http_client.fr.html" >Français</a></li>
+        <li><a href="http_client.ja.html" >日本語</a></li>
+        <li><a href="http_client.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_client.ru.html" >Русский</a></li>
+        <li><a href="http_client.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_client.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="make_it_modular.ru.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ru.html">learnyounode</a>
+      <a href="http_collect.ru.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP CLIENT</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">7 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Реализуйте программу, которая посылает HTTP GET запрос на URL, который вы получите в качестве первого аргумента командной строки. Выведите содержимое <strong>каждого</strong> события &quot;data&quot; из ответа (response) построчно в консоль (stdout).</p>
+<hr>
+<h2 id="-">ИНФОРМАЦИЯ</h2>
+<p>Для решения этой задачи Вам понадобится встроенный <code>http</code> модуль.</p>
+<p>Документацию для <code>http</code> модуля вы сможете найти набрав в браузере:
+  <a href="../node_apidoc/http.html">/node_apidoc/http.html</a></p>
+<p><code>http.get()</code> это упрощенный метод для GET запросов, используйте его в своем решении. Первым аргументом может URL куда требуется отправить запрос, вторым - функция обратного вызова.</p>
+<p>В отличии от других функций обратного вызова, эта функция имеет следующую сигнатуру:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(response)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>где <code>response</code> это объект типа <strong>Stream</strong> (поток). Вы можете интерпритировать потоки как объекты которые посылают события. Три из них наиболее интересны: &quot;data&quot;, &quot;error&quot;, &quot;end&quot;. Вы можете подписаться на собития следующим образом:</p>
+<pre><code class="lang-js">response.on(<span class="hljs-string">"data"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> })
+</code></pre>
+<p>Событие &quot;data&quot; посылается, когда часть данных становится доступной и может быть обработана. Размер этих частей в основном зависит от источника данных.</p>
+<p>Объект/поток <code>response</code>, который вы можете получить из <code>http.get()</code> так же имеет метод <code>setEncoding()</code>. Если вы передадите этому методу &quot;utf8&quot;, то событие &quot;data&quot; будет посылать данные строкового типа, нежели Node <code>Buffer</code>, который вы должны будете постоянно конвертировать в строки.</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="make_it_modular.ru.html" class="u-inline-block all-caps">MAKE IT MODULAR
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="http_collect.ru.html" class="u-inlineBlock all-caps">HTTP COLLECT
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

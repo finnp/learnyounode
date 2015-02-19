@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="juggling_async.html" >English</a></li>
+        <li><a href="juggling_async.es.html" >Español</a></li>
+        <li><a href="juggling_async.fr.html" >Français</a></li>
+        <li><a href="juggling_async.ja.html" >日本語</a></li>
+        <li><a href="juggling_async.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="juggling_async.ru.html" >Русский</a></li>
+        <li><a href="juggling_async.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="juggling_async.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_collect.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="time_server.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">ASYNCジャグリング</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">9 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>今回の問題は前回（HTTP Collect) とよく似た、<code>http.get()</code> を使って URL の結果をコンソールに出力するアプリです。ただ前回のコマンドライン引数は一つの URL でしたが今回の引数は<strong>三つ</strong>の URL にしてください。</p>
+<p>三つの GET リクエストの全てのデータを集めてコンソールに書き出してください。今回の出力には文字カウントは不要です。文字列だけで良いです。引数 (URL) 一つにつき一回出力してください。出力の際は、コマンドラインの引数の順番は厳守してください。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>対象の三つの HTTP サーバは思った通り動かないかもしれません。さらにどの順番でデータが提供されるのか決まっていないのでそのままに出力すると順番がぐちゃぐちゃになります。</p>
+<p>レスポンスの順番はリクエストの順番と異なる為、なんらかの変数に各リクエストの状態を保存する必要があると思います。全てを受け取ってからコンソールに出力してください。</p>
+<p>コールバックを数えるのは Node.js の <strong>async</strong> マネージメントにおいて重要なことです。サードパーティのライブラリーとして<a href="http://npm.im/async">async</a> や <a href="http://npm.im/after">after</a> などがありますが今回は使わず頑張ってください。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_collect.ja.html" class="u-inline-block all-caps">HTTP 集める
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="time_server.ja.html" class="u-inlineBlock all-caps">タイムサーバ
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

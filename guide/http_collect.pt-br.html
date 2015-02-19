@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_collect.html" >English</a></li>
+        <li><a href="http_collect.es.html" >Español</a></li>
+        <li><a href="http_collect.fr.html" >Français</a></li>
+        <li><a href="http_collect.ja.html" >日本語</a></li>
+        <li><a href="http_collect.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_collect.ru.html" >Русский</a></li>
+        <li><a href="http_collect.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_collect.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_client.pt-br.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.pt-br.html">learnyounode</a>
+      <a href="juggling_async.pt-br.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">COLETÂNEA HTTP</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">8 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escreva um programa que realize uma requisição HTTP GET em uma URL fornecida por você como o primeiro argumento na linha de comando. Pegue <strong>todos</strong> os dados (&quot;data&quot;) do servidor (não apenas o primeiro evento &quot;data&quot;) e então escreva duas linhas no console (stdout).</p>
+<p>A primeira linha você vai escrever deve apenas ser um inteiro representando o número de caracteres recebidos do servidor, e a outra linha deve conter a String completa de caracteres enviados pelo servidor.</p>
+<hr>
+<h2 id="dicas">DICAS</h2>
+<p>Existem duas abordagens para você resolver este problema:</p>
+<p><strong>1)</strong> Coletar dados através de múltiplos eventos &quot;data&quot; e anexar os resultados antes de imprimí-los na saída. Use o evento &quot;end&quot; para determinar quando a stream (o fluxo) terminou e então você pode imprimir a saída.</p>
+<p><strong>2)</strong> Use um pacote de terceiros para abstrair as dificuldades envolvidas em coletar uma stream inteira de dados. Dois pacotes diferentes fornecem uma API útil para resolver este problema (existem mais parecidos!): <code>bl</code> (Buffer List) e <code>concat-stream</code>; faça sua escolha!</p>
+<p>  <a href="http://npm.im/bl">http://npm.im/bl</a>
+  <a href="http://npm.im/concat-stream">http://npm.im/concat-stream</a></p>
+<p>Para instalar um pacote Node, use o Node Package Manager <code>npm</code>. Apenas digite:</p>
+<pre><code class="lang-sh">$ npm install bl
+</code></pre>
+<p>E isso vai fazer o download e instalar a última versão do pacote dentro de um sub-diretório chamado <code>node_modules</code>. Qualquer pacote neste sub-diretório sob seu arquivo principal do programa poderá carregá-lo com a sintaxe <code>require</code> sem ser precedido por <code>./</code>:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> bl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bl'</span>)
+</code></pre>
+<p>Node vai primeiro olhar dentro dos módulos do núcleo e então dentro do diretório <code>node_modules</code> onde o pacote está localizado.</p>
+<p>Se você não tem uma conexão com a internet, simplesmente crie um diretório <code>node_modules</code> e copie o diretório inteiro do pacote que você gostaria de usar dentro do diretório de instalação da sua aplicação.</p>
+<p>  <a href="../node_modules/bl">/node_modules/bl</a>
+  <a href="../node_modules/concat-stream">/node_modules/concat-stream</a></p>
+<p>Ambos <code>bl</code> e <code>concat-stream</code> pode ter uma stream <em>piped</em> (canalizada) dentro deles e então vão coletar os dados para você. Uma vez que a stream terminou, um callback vai ser disparado com os dados:</p>
+<pre><code class="lang-js">response.pipe(bl(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+<span class="hljs-comment">// ou</span>
+response.pipe(concatStream(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+</code></pre>
+<p>Note que você provavelmente vai precisar de <code>data.toString()</code> para converter o Buffer.</p>
+<p>A documentação para ambos estes módulos foram instaladas juntamente com learnyounode em seu sistema e você pode lê-las direcionando seu navegador aqui:</p>
+<p>  <a href="../docs/bl.html">/docs/bl.html</a>
+  <a href="../docs/concat-stream.html">/docs/concat-stream.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_client.pt-br.html" class="u-inline-block all-caps">CLIENTE HTTP
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="juggling_async.pt-br.html" class="u-inlineBlock all-caps">BRINCANDO ASSÍNCRONAMENTE
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

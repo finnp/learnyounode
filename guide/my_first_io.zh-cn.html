@@ -1,0 +1,95 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="my_first_io.html" >English</a></li>
+        <li><a href="my_first_io.es.html" >Español</a></li>
+        <li><a href="my_first_io.fr.html" >Français</a></li>
+        <li><a href="my_first_io.ja.html" >日本語</a></li>
+        <li><a href="my_first_io.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="my_first_io.ru.html" >Русский</a></li>
+        <li><a href="my_first_io.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="my_first_io.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="baby_steps.zh-cn.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-cn.html">learnyounode</a>
+      <a href="my_first_async_io.zh-cn.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">第一个 I/O！</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">3 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>编写一个程序，执行一个<strong>同步</strong>的文件系统操作，读取一个文件，并且在终端（标准输出 stdout）打印出这个文件中的内容的行数。类似于执行 <code>cat file | wc -l</code> 这个命令。</p>
+<p>所要读取的文件的完整路径会在命令行第一个参数提供。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>要执行一个对文件系统的操作，你将会用到 <code>fs</code> 这个 Node 核心模块。要加载这类核心模块，或者其他的&quot;全局&quot;模块，可以用下面的方式引入：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+</code></pre>
+<p>现在你可以通过 <code>fs</code> 这个变量来访问整个 <code>fs</code> 模块了。</p>
+<p>在 <code>fs</code> 中，所有的同步（或者阻塞）的操作文件系统的方法名都会以 &#39;Sync&#39; 结尾。要读取一个文件，你将需要使用  <code>fs.readFileSync(&#39;/path/to/file&#39;)</code> 方法。这个方法会<em>返回</em>一个包含文件完整内容的 <code>Buffer</code> 对象。</p>
+<p><code>fs</code> 模块的文档，可以使用浏览器打开如下路径来访问：
+  <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a></p>
+<p><code>Buffer</code> 对象是 Node 用来高效处理数据的方式，无论该数据是 ascii 还是二进制文件，或者其他的格式。<code>Buffer</code> 可以很容易地通过调用 <code>toString()</code> 方法转换为字符串。如：<code>var str = buf.toString()</code>。</p>
+<p><code>Buffer</code> 的文档可以通过浏览器访问如下路径来查看：
+  <a href="../node_apidoc/buffer.html">/node_apidoc/buffer.html</a></p>
+<p>如果你在想如何更简单地去计算行数，请回想一下，一个 JavaScript 字符串，可以使用 <code>.split()</code> 分割成子字符串数组，而且，&#39;\n&#39; 可以作为分隔符。注意，供测试的文件末尾的最后一行并没有进行换行，即没有 &#39;\n&#39; 的存在，因此，使用这个方法的话，所得的数组的长度会比行数多一个。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="baby_steps.zh-cn.html" class="u-inline-block all-caps">婴儿学步
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_async_io.zh-cn.html" class="u-inlineBlock all-caps">第一个异步 I/O！
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

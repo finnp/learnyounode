@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="zh-tw">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="baby_steps.html" >English</a></li>
+        <li><a href="baby_steps.es.html" >Español</a></li>
+        <li><a href="baby_steps.fr.html" >Français</a></li>
+        <li><a href="baby_steps.ja.html" >日本語</a></li>
+        <li><a href="baby_steps.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="baby_steps.ru.html" >Русский</a></li>
+        <li><a href="baby_steps.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="baby_steps.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="hello_world.zh-tw.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-tw.html">learnyounode</a>
+      <a href="my_first_io.zh-tw.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">BABY STEPS</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">2 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>撰寫一個可以印出命令列參數總和的程式。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p>透過 global 的 <code>process</code> 物件，您可以存取到來自命令列的參數。 <code>process</code> 物件會把完整的命令列放到底下的 <code>argv</code> 屬性中，如 <code>process.argv</code> 。</p>
+<p>請先撰寫一個單純包含底下命令的程式：</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(process.argv)
+</code></pre>
+<p>在命令列中輸入 <code>node program.js</code> ，然後再後面多輸入幾個數字作為參數，如：</p>
+<pre><code class="lang-sh">$ node program.js 1 2 3
+</code></pre>
+<p>在這個範例中，程式的輸出會像底下一樣，是一個 Array （數列）：</p>
+<pre><code class="lang-js">[ <span class="hljs-string">'node'</span>, <span class="hljs-string">'/path/to/your/program.js'</span>, <span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span> ]
+</code></pre>
+<p>為了輸出這些參數的總和，您需要思考如何以迴圈的方式輪流存取這幾個參數。<code>process.argv</code> Array 的第一個元素永遠是「node」，而第二個元素也永遠是被執行的程式 <code>program.js</code> 的完整路徑，所以您需要從第三個元素（index 2）開始，依序加入來自命令列的參數，直到這個 Array 結束。</p>
+<p>要注意的是， <code>process.argv</code> 的所有元素都是字串（String），而您需要把它們 <em>轉換</em> 成數字（Number）。您可以在 <code>process.argv</code> 前加上 <code>+</code> 或是把這個屬性傳給函式 <code>Number()</code> 。如 <code>+process.argv[2]</code> 或 <code>Number(process.argv[2])</code> 。</p>
+<p>learnyounode 將會在您執行 <code>learnyounode verify program.js</code> 的時候加入參數，所以您不用自己加上。如果不想驗證程式，只想自己嘗試執行看看，可以在終端機中輸入 <code>learnyounode run program.js</code> 並執行。當您使用 <code>run</code> 的方式執行程式的時候，您將會引入 learnyounode 為每個作業所設定好的測試環境。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="hello_world.zh-tw.html" class="u-inline-block all-caps">HELLO WORLD
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_io.zh-tw.html" class="u-inlineBlock all-caps">MY FIRST I/O!
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

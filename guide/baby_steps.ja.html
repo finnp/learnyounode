@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="baby_steps.html" >English</a></li>
+        <li><a href="baby_steps.es.html" >Español</a></li>
+        <li><a href="baby_steps.fr.html" >Français</a></li>
+        <li><a href="baby_steps.ja.html" >日本語</a></li>
+        <li><a href="baby_steps.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="baby_steps.ru.html" >Русский</a></li>
+        <li><a href="baby_steps.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="baby_steps.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="hello_world.ja.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.ja.html">learnyounode</a>
+      <a href="my_first_io.ja.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">ベイビーステップ</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">2 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>引数に与えた数字を合計してコンソール(stdout)に出力するコマンドラインアプリを書いてください。</p>
+<hr>
+<h2 id="-">ヒント</h2>
+<p>コマンドライン引数を読むためにはグローバル変数の <code>process</code> というオブジェクトが使えます。<code>process</code> は <code>argv</code> という <code>Array</code> を持っています。その <code>Array</code> のなかには全てのコマンドラインが入っています。例： <code>process.argv</code></p>
+<p>新しいアプリ <code>(program.js)</code> にこれを書いてスタートしてください：</p>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(process.argv)
+</code></pre>
+<p>コマンドラインに <code>node program.js</code> を入力してアプリを実行します。引数も使えます！ 例:</p>
+<pre><code class="lang-sh">$ node program.js 1 2 3
+</code></pre>
+<p>実行するとこのように出力されるはずです:</p>
+<pre><code class="lang-js">[ <span class="hljs-string">'node'</span>, <span class="hljs-string">'/あなた/の/アプリ/フォルダ/program.js'</span>, <span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span> ]
+</code></pre>
+<p>次のステップでは数値だけを合計して表示する方法を考えます。<code>argv</code> の一つ目の引数はいつでも <code>node</code> です。二つ目の引数はいつもあなたのアプリファイルのパスです。なので三つ目の引数からスタートしないといけません。それぞれの要素を最後の要素まで合計してください。</p>
+<p><code>process.argv</code> の要素は全て string ですので注意してください。もしかしたら数字への変換が必要になるかもしれません。変換するには、数字の前に <code>+</code> を書きます。<code>Number()</code>を使う方法もあります。例: <code>+process.argv[2]</code> または <code>Number(process.argv[2])</code> 。</p>
+<p><code>learnyounode verify program.js</code> で、アプリが正しく動くかどうか確かめられます。learnyounode はあなたのアプリの実行時に引数を渡します。単純にアプリを実行する方法もあります： <code>learnyounode run program.js</code>。 <code>run</code> を使うと各ステップのためのテスト設定を呼び出して実行することが出来ます。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="hello_world.ja.html" class="u-inline-block all-caps">こんにちは世界
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="my_first_io.ja.html" class="u-inlineBlock all-caps">初めてのI/O！
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

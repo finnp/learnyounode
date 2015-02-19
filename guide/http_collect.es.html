@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="http_collect.html" >English</a></li>
+        <li><a href="http_collect.es.html" >Español</a></li>
+        <li><a href="http_collect.fr.html" >Français</a></li>
+        <li><a href="http_collect.ja.html" >日本語</a></li>
+        <li><a href="http_collect.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="http_collect.ru.html" >Русский</a></li>
+        <li><a href="http_collect.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="http_collect.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="http_client.es.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.es.html">learnyounode</a>
+      <a href="juggling_async.es.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">HTTP COLLECT</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">8 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>Escribe un programa que realice una petición HTTP GET a una URL provista como primer argumento del programa.
+Almacena <strong>todos</strong> los datos recibidos del servidor, es decir no sólo el primer evento &quot;data&quot;, y luego escribe a consola dos líneas:</p>
+<ul>
+<li>En la primera escribe la cantidad de caracteres recibidos.</li>
+<li>En la segunda escribe la totalidad de caracteres recibidos (todo el string).</li>
+</ul>
+<hr>
+<h2 id="pistas">PISTAS</h2>
+<p>Hay por lo menos dos formas de resolver este problema:</p>
+<p><strong>1)</strong> Almacenar los datos de todos los eventos &quot;data&quot; para luego agregarlos los resultados antes de imprimirlos por consola. Puedes usar el evento &quot;end&quot; para saber cuando terminas de recibir datos.</p>
+<p><strong>2)</strong> Usa un paquete de terceros para evitar los problemas de almacenar el stream completo de datos. Por ejemplo, tienes a disposición: <code>bl</code> (Buffer List) o <code>concat-stream</code>.</p>
+<p>  <a href="http://npm.im/bl">http://npm.im/bl</a>
+  <a href="http://npm.im/concat-stream">http://npm.im/concat-stream</a></p>
+<p>Para instalar alguno de estos paquetes usa Node Package Manager <code>npm</code> de la siguiente forma:</p>
+<pre><code class="lang-sh">$ npm install bl
+</code></pre>
+<p>Npm descargará el paquete e instalará la última versión disponible en la carpeta <code>node_modules</code>. Todos los paquetes instalados ahí pueden cargarse desde tu programa usando <code>require</code> sin prefijo. Ejemplo:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> bl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bl'</span>)
+</code></pre>
+<p>Node busca primero en su núcleo de módulos y si no lo encuentra busca en <code>node_modules</code>.</p>
+<p>En caso de no tener conexión a Internet, simplemente crea una carpeta <code>node_modules</code> y copia el paquete desde el directorio de instalación de learnyounode, es decir:</p>
+<p>  <a href="../node_modules/bl">/node_modules/bl</a>
+  <a href="../node_modules/concat-stream">/node_modules/concat-stream</a></p>
+<p>Ambos paquetes pueden usar un stream <em>piped</em> para capturar los datos. Una vez que se acaba el stream se dispara un callback con todos los datos:</p>
+<pre><code class="lang-js">response.pipe(bl(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+<span class="hljs-comment">// or</span>
+response.pipe(concatStream(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{ <span class="hljs-comment">/* ... */</span> }))
+</code></pre>
+<p>Recuerda hacer <code>data.toString()</code> para convertir al Buffer de Node a String.</p>
+<p>Puedes leer la documentación de ambos módulos en la carpeta de instalación de learnyounode en:</p>
+<p>  <a href="../docs/bl.html">/docs/bl.html</a>
+  <a href="../docs/concat-stream.html">/docs/concat-stream.html</a></p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="http_client.es.html" class="u-inline-block all-caps">HTTP CLIENT
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="juggling_async.es.html" class="u-inlineBlock all-caps">JUGGLING ASYNC
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>

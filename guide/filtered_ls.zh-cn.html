@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>learnyounode Guide</title>
+        <meta name="description" content="learn git and github">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/code.css">
+        <link href='assets/fonts/fonts.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <!--[if lt IE 8]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+        <header class="site-header">
+  <div class="nav u-posFixed">
+    <ul class="nav-lang">
+        <li><a href="filtered_ls.html" >English</a></li>
+        <li><a href="filtered_ls.es.html" >Español</a></li>
+        <li><a href="filtered_ls.fr.html" >Français</a></li>
+        <li><a href="filtered_ls.ja.html" >日本語</a></li>
+        <li><a href="filtered_ls.pt-br.html" >Português (Brasil)</a></li>
+        <li><a href="filtered_ls.ru.html" >Русский</a></li>
+        <li><a href="filtered_ls.zh-cn.html" >中文 (中国)</a></li>
+        <li><a href="filtered_ls.zh-tw.html" >中文 (臺灣)</a></li>
+    </ul>
+    <div class="wrap-width u-textCenter">
+      <a href="my_first_async_io.zh-cn.html"
+        <span class="u-floatLeft hand">☜</span>
+      </a>
+      <a class="filledblock" href="index.zh-cn.html">learnyounode</a>
+      <a href="make_it_modular.zh-cn.html"
+        <span class="u-floatRight hand">☞</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <div class="u-floatLeft">
+      <span class="all-caps">CHALLENGE</span>
+      <h2 class="challenge-name">LS 过滤器</h2>
+    </div>
+    <div class="u-floatRight u-textRight">
+      <span class="all-caps">NUMBER</span>
+      <h2 class="challenge-name">5 / 13</h2>
+    </div>
+  </div>
+</header>
+      <div class="wrapper">
+
+        <p>编写一个程序来打印出指定目录下的文件列表，并且以特定的文件名扩展名来过滤这个列表。这次会有两个参数提供给你，第一个是所给的文件目录路径（如：<code>path/to/dir</code>），第二个参数则是需要过滤出来的文件的扩展名。</p>
+<p>举个例子：如果第二个参数是 <code>txt</code>，那么你需要过滤出那些<strong>扩展名为 .txt</strong>的文件。</p>
+<p>注意，第二个参数<em>将不会</em>带有开头的 <code>.</code>。</p>
+<p>你需要在终端中打印出这个被过滤出来的列表，每一行一个文件。另外，你<em>必须</em>使用异步的 I/O 操作。</p>
+<hr>
+<h2 id="-">提示</h2>
+<p><code>fs.readdir()</code> 方法接收两个参数：第一个是一个路径，第二个则是回调函数，这个回调函数会有如下特征：</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span> <span class="hljs-params">(err, list)</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<p>这里的 <code>list</code> 是一个数组，它所包含的元素是每个文件的文件名（字符串形式）。</p>
+<p><code>fs</code> 的文档你可以用浏览器访问 <a href="../node_apidoc/fs.html">/node_apidoc/fs.html</a> 来阅读。</p>
+<p>你可能会发现 node 自带的 <code>path</code> 模块也很有用，特别是它那个 <code>extname</code> 方法。</p>
+<p>同样，你也可以通过浏览器访问 <a href="../node_apidoc/path.html">/node_apidoc/path.html</a> 来阅读 <code>path</code> 模块的文档。</p>
+<hr>
+
+
+        <div class="prenext">
+  <div class="u-floatLeft">
+    <a href="my_first_async_io.zh-cn.html" class="u-inline-block all-caps">第一个异步 I/O！
+    <div>⤶ </div>
+    </a>
+  </div>
+  <div class="u-textRight u-floatRight">
+    <a href="make_it_modular.zh-cn.html" class="u-inlineBlock all-caps">使其模块化
+    <div>⤷</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <!-- <ul>
+    <li class="all-caps"><a href="index.html"><strong>Challenges</strong></a></li>
+    <li class="all-caps">
+      <a href="https://github.com/rvagg/learnyounode/issues/new" target="_blank">Open an Issue</a>
+    </li>
+  </ul> -->
+</footer>
+
+      </div>
+    </body>
+</html>
